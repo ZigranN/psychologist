@@ -1,0 +1,84 @@
+.about {
+    padding: 50px 20px;
+    background-color: #fff;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.overlay {
+    display: flex;
+}
+
+.text {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.link {
+    margin-top: 10px;
+    color: #4577a0;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.image img {
+    width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.methods {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.methods ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.methods ul li {
+    margin-bottom: 10px;
+}
+
+.decorCircle {
+    width: 120px;
+    height: 120px;
+    text-align: center;
+    padding-top: 15px;
+    border-radius: 50%;
+    background-color: #9bcfe6;
+}
+
+.decor1 {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+}
+
+.decor2 {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+}
+
+.statsNumber {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.statsLabel {
+    font-size: 14px;
+    color: #fff;
+}

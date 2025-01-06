@@ -1,0 +1,75 @@
+.appointment {
+    background-color: #f6f5f2;
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+}
+
+.image {
+    width: 50%;
+}
+
+.image img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.form {
+    background: #fff;
+    padding: 30px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #4c90af;
+    margin-bottom: 10px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.description {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #4c90af;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #333;
+}
+
+.button {
+    width: 100%;
+    padding: 10px;
+    background: #4c90af;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background: #333;
+}

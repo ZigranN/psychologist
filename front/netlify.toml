@@ -1,0 +1,8 @@
+[build]
+  publish = "."
+  command = "npm run build" # Укажите, если используете сборку (например, с Vite или React)
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

@@ -1,0 +1,32 @@
+.footer {
+    background-color: #4c90af;
+    padding: 20px 0;
+    text-align: center;
+    color: #fff;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.socials {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.link {
+    font-size: 18px;
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+.link:hover {
+    color: #d4ebf9;
+}
+
+.text {
+    margin-top: 10px;
+    font-size: 14px;
+}
