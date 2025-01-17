@@ -1,11 +1,12 @@
 .about {
     padding: 50px 20px;
-    background-color: #fff;
+    background-color: #f9f9f9;
+    animation: fadeIn 1s ease-in-out;
 }
 
 .container {
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 20px;
     max-width: 1200px;
     margin: 0 auto;
@@ -13,6 +14,9 @@
 
 .overlay {
     display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
 }
 
 .text {
@@ -20,6 +24,7 @@
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    line-height: 1.6;
 }
 
 .link {
@@ -27,12 +32,19 @@
     color: #4577a0;
     text-decoration: underline;
     font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+.link:hover {
+    color: #004080;
 }
 
 .image img {
     width: 100%;
     border-radius: 8px;
     object-fit: cover;
+    max-height: 400px;
+    animation: fadeInImage 1.2s ease-in-out;
 }
 
 .methods {
@@ -40,10 +52,12 @@
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    line-height: 1.6;
 }
 
 .methods ul {
-    margin: 0;
+    list-style-type: disc;
+    margin: 20px 0;
     padding-left: 20px;
 }
 
@@ -51,34 +65,130 @@
     margin-bottom: 10px;
 }
 
-.decorCircle {
-    width: 120px;
-    height: 120px;
-    text-align: center;
-    padding-top: 15px;
-    border-radius: 50%;
-    background-color: #9bcfe6;
-}
-
-.decor1 {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-}
-
-.decor2 {
-    position: absolute;
-    bottom: 10px;
-    right: 20px;
-}
-
-.statsNumber {
-    font-size: 24px;
+.therapyTrigger {
+    padding-left: 10px;
+    cursor: pointer;
+    color: #0044cc;
+    font-size: 1.2rem;
     font-weight: bold;
-    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
 }
 
-.statsLabel {
-    font-size: 14px;
-    color: #fff;
+.therapyTrigger:hover {
+    color: #002a80;
+    text-decoration: underline;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.modalContent {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    width: 100%;
+    position: relative;
+    text-align: center;
+    animation: fadeInModal 0.5s ease-in-out;
+}
+
+.closeButton {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #555;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.closeButton:hover {
+    background-color: #f0f0f0;
+    color: #222;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInImage {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeInModal {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+
+    .methods,
+    .overlay,
+    .modalContent {
+        padding: 15px;
+    }
+
+    .therapyTrigger {
+        font-size: 1rem;
+    }
+
+    .closeButton {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .methods ul li,
+    .text p {
+        font-size: 0.9rem;
+    }
+
+    .image img {
+        max-height: 300px;
+    }
 }

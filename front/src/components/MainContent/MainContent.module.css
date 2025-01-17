@@ -1,10 +1,7 @@
+/* Основной контейнер */
 .main {
     margin: 0 auto;
-    display: flex;
-    height: 100vh;
-    justify-content: space-between;
-    gap: 20px;
-    align-items: stretch;
+    padding: 20px;
     max-width: 1200px;
 }
 
@@ -12,72 +9,148 @@
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    align-items: stretch;
+    align-items: center;
     justify-content: center;
 }
 
+/* Левый блок */
 .shapeLeft {
     flex: 1;
+    height: 100vh;
     min-width: 300px;
     padding: 20px;
     background-color: #f0efee;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
     text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.shapeLeft:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
 }
 
 .subtitle {
-    font-size: 18px;
+    font-size: 24px;
     font-weight: bold;
     color: #4c90af;
     margin-bottom: 20px;
 }
 
 .title {
-    font-size: 40px;
+    font-size: 32px;
+    font-weight: 700;
     color: #333;
+    margin-bottom: 15px;
+}
+
+.intro {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
     margin-bottom: 20px;
 }
 
+/* Кнопка */
 .button {
     background-color: #fff;
     border: 2px solid #4c90af;
     color: #4577a0;
     font-size: 16px;
-    padding: 10px 20px;
+    padding: 12px 25px;
     cursor: pointer;
     border-radius: 10px;
-    margin: 20px 0;
-    transition: all 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .button:hover {
     background-color: #4c90af;
     color: #fff;
+    transform: scale(1.05);
 }
 
-.stat {
-    font-size: 16px;
-    line-height: 1.5;
+/* Основной текст */
+.mainText {
+    font-size: 14px;
     color: #666;
+    line-height: 1.8;
+    margin-top: 20px;
+    text-align: justify;
+    padding: 30px;
 }
 
-.stat span {
-    font-weight: bold;
-    color: #333;
+.quoteAuthor {
+    font-style: italic;
+    color: #4c90af;
+    margin-top: 10px;
 }
 
+/* Правый блок */
 .shapeRight {
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
+    padding: 10px;
 }
 
 .image {
     max-width: 100%;
     height: auto;
     border-radius: 10px;
-    object-fit: cover;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.image:hover {
+    transform: scale(1.05);
+}
+
+/* Мобильные стили */
+@media (max-width: 768px) {
+    .contentContainer {
+        flex-direction: column;
+    }
+
+    .shapeLeft, .shapeRight {
+        flex: none;
+        width: 100%;
+    }
+
+    .title {
+        font-size: 28px;
+    }
+
+    .subtitle {
+        font-size: 20px;
+    }
+
+    .button {
+        width: 100%;
+    }
+    .shapeRight {
+        max-width: 80%;
+    }
+}
+
+@media (max-width: 390px) {
+    .title {
+        font-size: 24px;
+    }
+
+    .subtitle {
+        font-size: 18px;
+    }
+
+    .button {
+        font-size: 14px;
+        max-width: 90%;
+    }
+
+    .mainText {
+        font-size: 12px;
+    }
+
 }

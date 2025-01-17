@@ -1,6 +1,12 @@
+/* Основные стили */
 .header {
     background-color: #f6f5f2;
     padding: 15px 0;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
 }
 
 .container {
@@ -9,6 +15,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
 .title {
@@ -17,9 +30,28 @@
     color: #4c90af;
 }
 
+.messengers {
+    display: flex;
+    gap: 10px;
+}
+
+.icon {
+    font-size: 18px;
+    color: #4c90af;
+    transition: transform 0.3s ease, color 0.3s ease;
+    margin-left: 10px ;
+}
+
+.icon:hover {
+    color: #666;
+    transform: scale(1.2);
+}
+
+/* Навигация */
 .nav {
     display: flex;
     gap: 20px;
+    transition: transform 0.3s ease-in-out;
 }
 
 .link {
@@ -36,4 +68,78 @@
 .active {
     font-weight: bold;
     color: #4c90af;
+}
+
+/* Бургер-меню */
+.burger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25px;
+    height: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 100;
+}
+
+.burgerLine {
+    width: 100%;
+    height: 3px;
+    background-color: #4c90af;
+    border-radius: 3px;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.burgerActive .burgerLine:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.burgerActive .burgerLine:nth-child(2) {
+    opacity: 0;
+}
+
+.burgerActive .burgerLine:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+.navOpen {
+    transform: translateY(0);
+}
+
+/* Мобильные стили */
+@media (max-width: 768px) {
+    .header {
+        max-width: 90%;
+    }
+    .burger {
+        display: flex;
+    }
+
+    .nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: #fff;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 0;
+        transform: translateY(-200%);
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 99;
+    }
+
+    .navOpen {
+        transform: translateY(0);
+    }
+
+    .link {
+        font-size: 18px;
+        width: 80%;
+        text-align: center;
+        padding: 10px 0;
+    }
 }

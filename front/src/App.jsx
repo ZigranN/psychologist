@@ -1,14 +1,11 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import Header from "./components/Header/Header.jsx";
 import MainPage from "./pages/MainPage/MainPage.jsx";
 import ArticlesPage from "./pages/ArticlesPage/ArticlesPage.jsx";
 import BookingPage from "./pages/BookingPage/BookingPage.jsx";
 import Footer from "./components/Footer/Footer.jsx";
+import AboutPage from "./pages/AboutPage/AboutPage.jsx";
 
-
-function AboutPage() {
-    return null;
-}
 
 const App = () => (
     <>
