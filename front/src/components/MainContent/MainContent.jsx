@@ -1,4 +1,5 @@
 import styles from "./MainContent.module.css";
+import {NavLink} from "react-router-dom";
 
 const MainContent = () => (
     <main className={styles.main}>
@@ -15,7 +16,7 @@ const MainContent = () => (
                     </p>
                 </div>
 
-                <button className={styles.button}>Записаться</button>
+                <NavLink to="/booking" className={styles.button} >Записаться</NavLink>
                 <div>
                     <p className={styles.mainText}>
                         Нет ничего, что может произойти с человеком, чего я,
@@ -36,7 +37,7 @@ const MainContent = () => (
             </div>
             <div className={styles.shapeRight}>
                 <img
-                    src="/src/assets/images/mainST.jpg"
+                    src="/images/mainST.jpg"
                     alt="Салтанат Тагаева"
                     className={styles.image}
                 />

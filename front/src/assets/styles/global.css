@@ -25,3 +25,7 @@ a {
     text-decoration: none;
     color: inherit;
 }
+p {
+    text-indent: 30px;
+    line-height: 1.6;
+}

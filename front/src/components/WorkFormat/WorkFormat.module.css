@@ -2,6 +2,23 @@
     background-color: #f6f5f2;
     padding: 40px 20px;
     text-align: center;
+    animation: fadeIn 1s ease-in-out;
+}
+h3{
+    color: #fff;
+}
+.card p {
+    text-align: center;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .title {
@@ -16,6 +33,7 @@
     justify-content: center;
     gap: 10px;
     margin-bottom: 30px;
+    flex-wrap: wrap;
 }
 
 .tab {
@@ -27,6 +45,7 @@
     cursor: pointer;
     transition: all 0.3s ease;
     border-radius: 5px;
+    min-width: 150px;
 }
 
 .tab.active {
@@ -41,6 +60,7 @@
 
 .content {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
 }
@@ -53,7 +73,13 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     max-width: 350px;
     text-align: center;
-    margin-left: 35px;
+    margin: 0 auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 .cardTitle {
@@ -65,6 +91,7 @@
 .cardDescription {
     font-size: 14px;
     margin-bottom: 20px;
+    line-height: 1.5;
 }
 
 .icons {
@@ -103,24 +130,29 @@
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s ease;
+    font-weight: bold;
 }
 
 .cardButton:hover {
     background: #333;
     color: #fff;
 }
+
 .cardBlock {
     display: flex;
-    justify-content: space-between;
-    padding: 10px ;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
 }
+
 .therapyTrigger {
     cursor: pointer;
-    padding-left: 20px;
     color: #0044cc;
     font-size: 1.2rem;
     font-weight: bold;
     text-decoration: none;
+    margin-bottom: 20px;
+    display: inline-block;
     transition: color 0.3s ease-in-out;
 }
 
@@ -153,6 +185,18 @@
     width: 100%;
     position: relative;
     text-align: center;
+    animation: fadeInModal 0.5s ease-in-out;
+}
+
+@keyframes fadeInModal {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .closeButton {
@@ -173,4 +217,42 @@
 .closeButton:hover {
     background-color: #f0f0f0;
     color: #222;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .content,
+    .cardBlock {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        max-width: 90%;
+    }
+
+    .tabs {
+        flex-wrap: wrap;
+    }
+
+    .tab {
+        flex: 1;
+        max-width: 48%;
+        margin: 5px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 22px;
+    }
+
+    .cardButton,
+    .tab {
+        font-size: 14px;
+    }
+
+    .icons i {
+        font-size: 18px;
+    }
 }

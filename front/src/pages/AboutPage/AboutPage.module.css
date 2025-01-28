@@ -12,7 +12,7 @@
     gap: 2rem;
 }
 
-/* Анимация для плавного появления страницы */
+/* Анимация для плавного появления */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -32,6 +32,7 @@
     animation: slideIn 1s ease-in-out;
 }
 
+/* Анимация заголовка */
 @keyframes slideIn {
     from {
         opacity: 0;
@@ -60,12 +61,7 @@
     animation: fadeInSection 0.8s ease-in-out;
 }
 
-.section:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-}
-
-/* Анимация для плавного появления секций */
+/* Анимация секций */
 @keyframes fadeInSection {
     from {
         opacity: 0;
@@ -77,36 +73,99 @@
     }
 }
 
+.section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
 .list {
     list-style-type: disc;
     margin-left: 2rem;
     padding-left: 1rem;
 }
 
-.list li {
-    margin-bottom: 0.5rem;
-    line-height: 1.8;
-}
-
-.list1 {
-    list-style-type: none;
-    margin-left: 2rem;
-    position: relative;
-    padding-left: 20px;
-}
-
-.list1::before {
-    content: "•";
-    position: absolute;
-    left: 0;
-    top: 0;
-    color: #0056b3;
-    font-size: 1.5rem;
-}
-
 p {
     margin-bottom: 1rem;
     text-align: justify;
+}
+
+.proff {
+    background-image: url('./../../../public/images/photo2.jpg');
+    background-size: 20%;
+    background-position: right;
+    background-position-y: 20px;
+    background-repeat: no-repeat;
+    padding-right: 35%;
+}
+
+/* Уменьшение прозрачности фонового изображения на мобильных устройствах */
+@media (max-width: 768px) {
+    .proff {
+        background-size: 50%; /* Увеличение видимости изображения */
+        background-color: rgba(255, 255, 255, 0.8); /* Белый слой с прозрачностью */
+        background-blend-mode: lighten;
+    }
+}
+
+.vector {
+    position: relative;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.image {
+    width: 30%;
+    max-width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    object-fit: cover;
+}
+
+.text {
+    flex: 1;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    text-align: justify;
+}
+
+/* Кнопка "Посмотреть все документы" */
+.viewAllButton {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4c90af;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.viewAllButton:hover {
+    background-color: #3578a6;
+}
+
+/* Слайдер */
+.slider {
+    width: 100%;
+    height: auto;
+}
+
+.slideImage {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
 }
 
 /* Адаптивность */
@@ -127,8 +186,13 @@ p {
         padding: 1rem;
     }
 
-    .list, .list1 {
-        margin-left: 1rem;
+    .image {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .text {
+        text-align: left;
     }
 
     p {
@@ -145,15 +209,120 @@ p {
         font-size: 1.2rem;
     }
 
-    .list li, .list1 {
-        font-size: 0.9rem;
-    }
-
-    .section {
-        padding: 0.8rem;
-    }
-
-    p {
+    .text {
         font-size: 0.8rem;
+    }
+}
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Полупрозрачный фон */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0; /* Начальное состояние для плавного появления */
+    visibility: hidden; /* Скрываем окно по умолчанию */
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out; /* Плавный переход */
+}
+
+.modal.show {
+    opacity: 1; /* Плавно делаем окно видимым */
+    visibility: visible; /* Показываем окно */
+}
+
+.modalContent {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Тень для модального окна */
+    max-width: 80%;
+    max-height: 80%; /* Ограничение высоты */
+    overflow-y: auto; /* Скроллинг только по вертикали */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    transform: scale(0.9); /* Уменьшение для анимации появления */
+    transition: transform 0.3s ease-in-out; /* Плавное увеличение окна */
+}
+
+.modal.show .modalContent {
+    transform: scale(1); /* Масштабируем до 100% */
+}
+
+.closeButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #555;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.closeButton:hover {
+    background-color: #f0f0f0;
+    color: #222;
+}
+
+/* Слайдер */
+.slider {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.slideImage {
+    max-width: 90%;
+    max-height: 70%;
+    object-fit: cover; /* Вписываем изображение */
+    border-radius: 8px;
+    margin: 10px auto;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .modalContent {
+        max-width: 90%;
+        max-height: 75%;
+        padding: 15px;
+    }
+
+    .slideImage {
+        max-width: 100%;
+        max-height: 60%;
+    }
+    .closeButton {
+        top: 0;
+        right: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .modalContent {
+        max-width: 80%;
+        max-height: 70%;
+        text-align: center;
+    }
+
+    .slideImage {
+        max-width: 80%;
+        max-height: 50%;
+    }
+    .closeButton {
+        top: 0;
+        right: 10px;
     }
 }

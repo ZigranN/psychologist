@@ -16,7 +16,7 @@
 /* Левый блок */
 .shapeLeft {
     flex: 1;
-    height: 100vh;
+    height: 90vh;
     min-width: 300px;
     padding: 20px;
     background-color: #f0efee;
@@ -39,10 +39,11 @@
 }
 
 .title {
-    font-size: 32px;
+    font-size: 28px;
     font-weight: 700;
     color: #333;
     margin-bottom: 15px;
+    text-align: center;
 }
 
 .intro {
@@ -50,6 +51,7 @@
     color: #555;
     line-height: 1.6;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 /* Кнопка */
@@ -78,17 +80,20 @@
     margin-top: 20px;
     text-align: justify;
     padding: 30px;
+    text-indent: 30px;
 }
 
 .quoteAuthor {
     font-style: italic;
     color: #4c90af;
     margin-top: 10px;
+    text-align: center;
 }
 
 /* Правый блок */
 .shapeRight {
     flex: 1;
+    height: 90vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -98,7 +103,7 @@
 
 .image {
     max-width: 100%;
-    height: auto;
+    height: 100%;
     border-radius: 10px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
@@ -116,7 +121,8 @@
 
     .shapeLeft, .shapeRight {
         flex: none;
-        width: 100%;
+        width: 90%;
+        height: auto;
     }
 
     .title {
@@ -129,9 +135,6 @@
 
     .button {
         width: 100%;
-    }
-    .shapeRight {
-        max-width: 80%;
     }
 }
 
@@ -151,6 +154,10 @@
 
     .mainText {
         font-size: 12px;
+        text-indent: 30px;
+    }
+    .shapeRight {
+        width: 100%;
     }
 
 }

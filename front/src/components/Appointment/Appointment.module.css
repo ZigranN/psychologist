@@ -3,22 +3,38 @@
     padding: 40px 20px;
     max-width: 1200px;
     margin: 0 auto;
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .container {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     gap: 20px;
+    flex-wrap: wrap;
 }
 
 .image {
     width: 50%;
+    flex-shrink: 0;
 }
 
 .image img {
     width: 100%;
     border-radius: 10px;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .form {
@@ -27,12 +43,16 @@
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     text-align: left;
+    flex: 1;
+    min-width: 300px;
 }
 
 .subtitle {
     font-size: 14px;
     color: #4c90af;
     margin-bottom: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 .title {
@@ -40,36 +60,105 @@
     font-weight: bold;
     color: #333;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .description {
     font-size: 16px;
     color: #666;
     margin-bottom: 20px;
+    text-align: center;
+    line-height: 1.6;
 }
 
 .input {
     width: 100%;
-    padding: 10px;
+    padding: 12px 15px;
     margin-bottom: 15px;
     border: 1px solid #4c90af;
     border-radius: 5px;
     font-size: 14px;
     color: #333;
+    transition: border-color 0.3s ease;
+}
+
+.input:focus {
+    outline: none;
+    border-color: #333;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
 .button {
     width: 100%;
-    padding: 10px;
+    padding: 12px 15px;
     background: #4c90af;
     color: #fff;
     border: none;
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: bold;
 }
 
 .button:hover {
     background: #333;
+    transform: translateY(-3px);
+}
+
+.button:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .image {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .form {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .title {
+        font-size: 22px;
+    }
+
+    .description {
+        font-size: 14px;
+    }
+
+    .input {
+        font-size: 13px;
+    }
+
+    .button {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 20px;
+    }
+
+    .description {
+        font-size: 12px;
+    }
+
+    .input {
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    .button {
+        padding: 10px;
+        font-size: 14px;
+    }
 }

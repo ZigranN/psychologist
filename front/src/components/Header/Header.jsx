@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
-import styles from "./Header.module.css";
+import { useState, useEffect } from "react";
+import styles from  './Header.module.css';
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -9,11 +9,36 @@ const Header = () => {
         setIsMenuOpen(!isMenuOpen);
     };
 
+    const closeMenu = () => {
+        setIsMenuOpen(false);
+    };
+
+    useEffect(() => {
+        const handleOutsideClick = (event) => {
+            const menu = document.querySelector(`.${styles.nav}`);
+            const burger = document.querySelector(`.${styles.burger}`);
+            // Если клик вне меню и кнопки-бургера, закрываем меню
+            if (menu && burger && !menu.contains(event.target) && !burger.contains(event.target)) {
+                closeMenu();
+            }
+        };
+
+        if (isMenuOpen) {
+            document.addEventListener("click", handleOutsideClick);
+        } else {
+            document.removeEventListener("click", handleOutsideClick);
+        }
+
+        return () => {
+            document.removeEventListener("click", handleOutsideClick);
+        };
+    }, [isMenuOpen]);
+
     return (
         <header className={styles.header}>
             <div className={styles.container}>
                 <div className={styles.brand}>
-                    <h1 className={styles.title}>Салтанат Тагаева</h1>
+                    <NavLink to="/" className={styles.title}>Салтанат Тагаева</NavLink>
                 </div>
                 <button
                     className={`${styles.burger} ${isMenuOpen ? styles.burgerActive : ""}`}
@@ -37,7 +62,7 @@ const Header = () => {
                     <NavLink to="/booking" className={styles.link}>
                         Запись
                     </NavLink>
-                    <div style={{display: 'flex'}}>
+                    <div style={{ display: 'flex' }}>
                         <a
                             href="https://api.whatsapp.com/send?phone=996555922289"
                             target="_blank"
@@ -63,7 +88,6 @@ const Header = () => {
                             <i className="fab fa-instagram"></i>
                         </a>
                     </div>
-
                 </div>
             </div>
         </header>
