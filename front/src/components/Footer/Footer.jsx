@@ -37,17 +37,17 @@ const Footer = () => (
                     <h3 className={styles.heading}>Быстрые ссылки</h3>
                     <ul className={styles.linkList}>
                         <li>
-                            <a href="/about" className={styles.footerLink}>
+                            <a href="/psychologist/about" className={styles.footerLink}>
                                 Обо мне
                             </a>
                         </li>
                         <li>
-                            <a href="/articles" className={styles.footerLink}>
+                            <a href="/psychologist/articles" className={styles.footerLink}>
                                 Статьи
                             </a>
                         </li>
                         <li>
-                            <a href="/booking" className={styles.footerLink}>
+                            <a href="/psychologist/booking" className={styles.footerLink}>
                                 Записаться
                             </a>
                         </li>

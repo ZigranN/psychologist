@@ -16,7 +16,7 @@ const MainContent = () => (
                     </p>
                 </div>
 
-                <NavLink to="/booking" className={styles.button} >Записаться</NavLink>
+                <NavLink to="/psychologist/booking" className={styles.button} >Записаться</NavLink>
                 <div>
                     <p className={styles.mainText}>
                         Нет ничего, что может произойти с человеком, чего я,
@@ -37,7 +37,7 @@ const MainContent = () => (
             </div>
             <div className={styles.shapeRight}>
                 <img
-                    src="./images/mainST.jpg"
+                    src="/psychologist/images/mainST.jpg"
                     alt="Салтанат Тагаева"
                     className={styles.image}
                 />

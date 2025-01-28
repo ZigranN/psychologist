@@ -11,7 +11,7 @@ const WorkFormat = () => {
         };
 
         const handleBooking = (sessionType, format) => {
-            navigate("/booking", { state: { sessionType, format } });
+            navigate("/psychologist/booking", { state: { sessionType, format } });
         };
         const [isModalOpen, setModalOpen] = useState(false);
         const [isModalOpen2, setModalOpen2] = useState(false);
