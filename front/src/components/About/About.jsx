@@ -1,5 +1,6 @@
 import{ useState } from "react";
 import styles from "./About.module.css";
+import {NavLink} from "react-router-dom";
 
 const About = () => {
     const [isModalOpen, setModalOpen] = useState(false);
@@ -18,9 +19,9 @@ const About = () => {
                             Европейской Ассоциации Гештальт-терапии
                         </p>
                         <p>Регулярно участвую в обучающих программах по психотерапии и прохожу супервизии.</p>
-                        <a href="/psychologist/about" className={styles.link}>
+                        <NavLink to="/psychologist/about" className={styles.link}>
                             Посмотреть пройденное обучение
-                        </a>
+                        </NavLink>
                     </div>
                 </div>
                 <div className={styles.image}>
@@ -33,9 +34,9 @@ const About = () => {
                         <li>Собственный опыт, проживание травматических переживаний...</li>
                         <li>Духовный поиск, тернистый путь становления собой.</li>
                     </ul>
-                    <a href="/psychologist/about" className={styles.link}>
+                    <NavLink to="/psychologist/about" className={styles.link}>
                         Нажмите, чтобы узнать подробнее
-                    </a>
+                    </NavLink>
                 </div>
 
             </div>

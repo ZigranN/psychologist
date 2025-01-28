@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import styles from "./Modal.module.css";
 import PropTypes from "prop-types";
 
@@ -15,9 +15,9 @@ const Modal = ({ isOpen, title, content, articleId, onClose }) => {
                 </button>
                 <h2 className={styles.title}>{title}</h2>
                 <p className={styles.text}>{content}</p>
-                <Link to={`/articles#${articleId}`} className={styles.detailsButton}>
+                <NavLink to={`/psychologist/articles#${articleId}`} className={styles.detailsButton}>
                     Подробнее
-                </Link>
+                </NavLink>
             </div>
         </div>
     );

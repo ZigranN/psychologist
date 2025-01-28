@@ -13,7 +13,7 @@ const AboutPage = () => {
         setModalOpen(!isModalOpen);
     };
 
-    const images = Array.from({length: 16}, (_, index) => `/images/educ${index + 1}.jpg`);
+    const images = Array.from({length: 16}, (_, index) => `/psychologist/images/educ${index + 1}.jpg`);
     return (
         <div className={styles.aboutPage}>
             <h1 className={styles.title}>Обо мне</h1>
@@ -137,7 +137,7 @@ const AboutPage = () => {
                 <h2 className={styles.subtitle}>Моя направленность</h2>
                 <div className={styles.content}>
                     <img
-                        src="/images/photo.jpg"
+                        src="/psychologist/images/photo.jpg"
                         alt="Фон"
                         className={styles.image}
                     />
