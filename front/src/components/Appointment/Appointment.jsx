@@ -4,7 +4,7 @@ const Appointment = () => (
     <section className={styles.appointment}>
         <div className={styles.container}>
             <div className={styles.image}>
-                <img src="/images/4.jpg" alt="Салтанат" />
+                <img src="./images/4.jpg" alt="Салтанат" />
             </div>
             <div className={styles.form}>
                 <h2 className={styles.title}>ЗАПИШИТЕСЬ НА ПЕРВЫЙ СЕАНС</h2>

@@ -37,7 +37,7 @@ const MainContent = () => (
             </div>
             <div className={styles.shapeRight}>
                 <img
-                    src="/images/mainST.jpg"
+                    src="./images/mainST.jpg"
                     alt="Салтанат Тагаева"
                     className={styles.image}
                 />
