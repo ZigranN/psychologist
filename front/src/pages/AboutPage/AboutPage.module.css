@@ -154,7 +154,11 @@ p {
 .viewAllButton:hover {
     background-color: #3578a6;
 }
-
+.law {
+    margin-top: 10px;
+    font-weight: inherit;
+    font-size: 20px;
+}
 /* Слайдер */
 .slider {
     width: 100%;
@@ -325,4 +329,106 @@ p {
         top: 0;
         right: 10px;
     }
+    .content {
+        align-items: center;
+        text-align: center;
+    }
+    .image {
+        margin: 0 auto;
+    }
+    .mainAbout {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .myPhoto {
+        width: 20%;
+        top: 10px;
+        height: 15%;
+        border-radius: 10px;
+    }
+    .proff {
+        background: none;
+    }
 }
+.way {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+}
+
+.myPhoto {
+    width: 35%;
+    max-width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    object-fit: cover;
+}
+
+.text {
+    flex: 1;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    text-align: justify;
+}
+.carousel {
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.carousel-images {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.carousel-images img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+}
+
+button {
+    position: absolute;
+    top: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    transform: translateY(-50%);
+}
+
+button.prev {
+    left: 10px;
+}
+
+button.next {
+    right: 10px;
+}
+/* Адаптивность */
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .myPhoto {
+        width: 80%;
+        max-width: 100%;
+    }
+}
+

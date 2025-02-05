@@ -64,3 +64,9 @@
 .button:hover {
     background-color: #333;
 }
+@media (max-width: 480px) {
+    .title {
+        font-size: 18px;
+        padding-bottom: 10px;
+    }
+}

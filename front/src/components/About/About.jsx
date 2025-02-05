@@ -1,9 +1,10 @@
-import{ useState } from "react";
+import {useState} from "react";
 import styles from "./About.module.css";
 import {NavLink} from "react-router-dom";
 
 const About = () => {
     const [isModalOpen, setModalOpen] = useState(false);
+
 
     const handleModalToggle = () => {
         setModalOpen(!isModalOpen);
@@ -15,12 +16,12 @@ const About = () => {
                 <div className={styles.overlay}>
                     <div className={styles.text}>
                         <p>
-                            КНУ\Дипломированный психолог <br/> Гештальт-терапевт <br/>Сертификация по стандартам
+                            КНУ / Дипломированный психолог <br/> Гештальт-терапевт/ <br/>Сертификация по стандартам
                             Европейской Ассоциации Гештальт-терапии
                         </p>
                         <p>Регулярно участвую в обучающих программах по психотерапии и прохожу супервизии.</p>
-                        <NavLink to="/psychologist/about" className={styles.link}>
-                            Посмотреть пройденное обучение
+                        <NavLink to="/psychologist/about#education" className={styles.link}>
+                            Образование и квалификации
                         </NavLink>
                     </div>
                 </div>
@@ -32,9 +33,9 @@ const About = () => {
                     <ul>
                         <li>Клинический опыт, профессиональные навыки...</li>
                         <li>Собственный опыт, проживание травматических переживаний...</li>
-                        <li>Духовный поиск, тернистый путь становления собой.</li>
+                        <li>Духовный поиск и путь становления собой.</li>
                     </ul>
-                    <NavLink to="/psychologist/about" className={styles.link}>
+                    <NavLink to="/psychologist/about#myWay" className={styles.link}>
                         Нажмите, чтобы узнать подробнее
                     </NavLink>
                 </div>
@@ -42,7 +43,7 @@ const About = () => {
             </div>
             <div className={styles.theraphy}>
                 <h5 className={styles.therapyTrigger} onClick={handleModalToggle}>
-                    Для чего и кому нужна психотерапия?
+                    Кому нужна психотерапия?
                 </h5>
             </div>
             {isModalOpen && (

@@ -51,9 +51,6 @@ const WorkFormat = () => {
                                 <div className={styles.card}>
                                     <h3 className={styles.cardTitle}>Личная сессия</h3>
                                     <p>Очно / Онлайн</p>
-                                    <p className={styles.cardDescription}>
-                                        Возможность провести сеанс в удобное для вас время и место, не выходя из дома.
-                                    </p>
                                     <div className={styles.icons}>
                                         <i className="fab fa-whatsapp"></i>
                                         <i className="fab fa-telegram-plane"></i>
@@ -78,7 +75,7 @@ const WorkFormat = () => {
                                     <h3 className={styles.cardTitle}>Парная сессия</h3>
                                     <p>Очно / Онлайн</p>
                                     <p className={styles.cardDescription}>
-                                        Проведение сеанса в уютной обстановке, при личной встрече в городе Бишкек.
+                                        Фокус терапии пар в гешталь-подходе направлен прежде всего на то, как партнеры оргунизуют контакт между собой.
                                     </p>
                                     <div className={styles.icons}>
                                         <i className="fas fa-map-marker-alt"></i>

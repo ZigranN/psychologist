@@ -7,12 +7,11 @@ const MainContent = () => (
             <div className={styles.shapeLeft}>
                 <div>
                     <p className={styles.title}>ХОЛИСТИЧЕСКАЯ ПСИХОЛОГИЯ</p>
-                    <h1 className={styles.subtitle}>САЛТАНАТ ТАГАЕВА</h1>
                     <p className={styles.intro}>
                         Дипломированный психолог <br />
                         Гештальт-терапевт <br />
                         Интегрированный подход <br />
-                        Ассоциированный член ПКГА
+                        Ассоциированный член ПСАГС/ПКГА
                     </p>
                 </div>
 

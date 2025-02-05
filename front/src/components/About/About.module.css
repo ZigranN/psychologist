@@ -95,8 +95,9 @@
 
 .therapyTrigger {
     cursor: pointer;
-    color: #0044cc;
-    font-size: 1.1rem;
+    color: #333;
+    margin-top: 10px;
+    font-size: 24px;
     font-weight: bold;
     text-decoration: none;
     transition: color 0.3s ease-in-out;
@@ -130,7 +131,6 @@
     border-radius: 12px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     max-width: 90%;
-    width: 60%; /* Автоматическая ширина */
     text-align: center;
     animation: fadeInModal 0.5s ease-in-out;
 }
@@ -212,7 +212,8 @@
     }
 
     .therapyTrigger {
-        font-size: 1rem;
+        font-size: 22px;
+        padding-left: 10px;
     }
 
     .closeButton {

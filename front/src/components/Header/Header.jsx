@@ -50,16 +50,16 @@ const Header = () => {
                     <span className={styles.burgerLine}></span>
                 </button>
                 <div className={`${styles.nav} ${isMenuOpen ? styles.navOpen : ""}`}>
-                    <NavLink to="/psychologist/" className={styles.link}>
+                    <NavLink to="/psychologist/" className={styles.link} onClick={()=> setIsMenuOpen(false)}>
                         Главная
                     </NavLink>
-                    <NavLink to="/psychologist/about" className={styles.link}>
+                    <NavLink to="/psychologist/about" className={styles.link} onClick={()=> setIsMenuOpen(false)}>
                         Обо мне
                     </NavLink>
-                    <NavLink to="/psychologist/articles" className={styles.link}>
+                    <NavLink to="/psychologist/articles" className={styles.link} onClick={()=> setIsMenuOpen(false)}>
                         Статьи
                     </NavLink>
-                    <NavLink to="/psychologist/booking" className={styles.link}>
+                    <NavLink to="/psychologist/booking" className={styles.link} onClick={()=> setIsMenuOpen(false)}>
                         Запись
                     </NavLink>
                     <div style={{ display: 'flex' }}>

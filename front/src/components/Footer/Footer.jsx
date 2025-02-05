@@ -1,4 +1,5 @@
 import styles from "./Footer.module.css";
+import {NavLink} from "react-router-dom";
 
 const Footer = () => (
     <footer className={styles.footer}>
@@ -6,7 +7,7 @@ const Footer = () => (
             <div className={styles.topSection}>
                 <div className={styles.about}>
                     <p className={styles.aboutText}>
-                        Я приглашаю вас в тонкое поле осознанности, в котором можно обучиться осознаванию себя и искусству аутентичного чуткого контакта.                    </p>
+                        Я приглашаю вас в тонкое поле осознанности, в котором можно осваивать навыки самоосознования и постигать искусство аутентичного чуткого контакта.                    </p>
                 </div>
                 <div className={styles.socials}>
                     <h3 className={styles.heading}>Контакты: </h3>
@@ -37,19 +38,19 @@ const Footer = () => (
                     <h3 className={styles.heading}>Быстрые ссылки</h3>
                     <ul className={styles.linkList}>
                         <li>
-                            <a href="/psychologist/about" className={styles.footerLink}>
+                            <NavLink to="/psychologist/about" className={styles.footerLink}>
                                 Обо мне
-                            </a>
+                            </NavLink>
                         </li>
                         <li>
-                            <a href="/psychologist/articles" className={styles.footerLink}>
+                            <NavLink to="/psychologist/articles" className={styles.footerLink}>
                                 Статьи
-                            </a>
+                            </NavLink>
                         </li>
                         <li>
-                            <a href="/psychologist/booking" className={styles.footerLink}>
+                            <NavLink to="/psychologist/booking" className={styles.footerLink}>
                                 Записаться
-                            </a>
+                            </NavLink>
                         </li>
                     </ul>
                 </div>
