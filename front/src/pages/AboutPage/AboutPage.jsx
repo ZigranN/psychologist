@@ -28,7 +28,7 @@ const AboutPage = () => {
         }
     }, [location]);
 
-    const images = Array.from({length: 16}, (_, index) => `/psychologist/images/educ${index + 1}.jpg`);
+    const images = Array.from({length: 15}, (_, index) => `/psychologist/images/educ${index + 1}.jpg`);
     const imagesForVideo = Array.from({length: 10}, (_, index) => `/psychologist/images/video${index + 1}.jpg`);
     return (
         <div className={styles.aboutPage}>
