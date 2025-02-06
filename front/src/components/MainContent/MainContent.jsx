@@ -5,7 +5,7 @@ const MainContent = () => (
     <main className={styles.main}>
         <div className={styles.contentContainer}>
             <div className={styles.shapeLeft}>
-                <div>
+                <div className={styles.box}>
                     <p className={styles.title}>ХОЛИСТИЧЕСКАЯ ПСИХОЛОГИЯ</p>
                     <p className={styles.intro}>
                         Дипломированный психолог <br />

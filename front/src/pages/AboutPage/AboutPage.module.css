@@ -1,7 +1,7 @@
 .aboutPage {
     max-width: 1200px;
     margin: auto;
-    padding: 2rem;
+    padding: 1rem;
     font-family: 'Arial', sans-serif;
     color: #333;
     line-height: 1.6;
@@ -26,7 +26,7 @@
 
 .title {
     font-size: 2.5rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
     color: #0056b3;
     text-align: center;
     animation: slideIn 1s ease-in-out;
@@ -90,25 +90,19 @@ p {
 }
 
 .proff {
-    background-image: url('./../../../public/images/photo2.jpg');
-    background-size: 20%;
-    background-position: right;
-    background-position-y: 20px;
-    background-repeat: no-repeat;
     padding-right: 35%;
 }
 
 /* Уменьшение прозрачности фонового изображения на мобильных устройствах */
 @media (max-width: 768px) {
     .proff {
-        background-size: 50%; /* Увеличение видимости изображения */
-        background-color: rgba(255, 255, 255, 0.8); /* Белый слой с прозрачностью */
+        background-size: 50%;
+        background-color: rgba(255, 255, 255, 0.8);
         background-blend-mode: lighten;
     }
 }
 
 .vector {
-    position: relative;
     padding: 20px;
     background-color: #f9f9f9;
     border-radius: 10px;
@@ -148,30 +142,80 @@ p {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease-in-out;
 }
 
 .viewAllButton:hover {
     background-color: #3578a6;
 }
+
 .law {
     margin-top: 10px;
-    font-weight: inherit;
     font-size: 20px;
 }
-/* Слайдер */
+
 .slider {
     width: 100%;
-    height: auto;
+    max-width: 600px;
+    height: 400px;  /* Устанавливаем высоту */
+    margin: auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
 
+/* 📌 Исправленное изображение */
 .slideImage {
     width: 100%;
-    height: auto;
-    border-radius: 8px;
-    object-fit: cover;
+    height: 100%;
+    object-fit: cover; /* Заполняет контейнер */
+    object-position: center; /* Теперь отображается верхняя часть картинки */
+    border-radius: 12px;
+    transition: transform 0.5s ease-in-out, opacity 0.8s ease-in-out;
 }
 
+/* 📌 Анимация fade */
+.fadeSlide {
+    animation: fadeInSlide 1s ease-in-out;
+}
+
+@keyframes fadeInSlide {
+    from {
+        opacity: 0;
+        transform: scale(1.1);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* 📌 Адаптивность */
+@media (max-width: 768px) {
+    .slider {
+        max-width: 100%;
+        height: 400px; /* Уменьшаем высоту */
+    }
+
+    .slideImage {
+        height: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .slider {
+        height: 250px;
+        margin: 0;
+    }
+    .fadeSlide {
+        padding: 0;
+        margin: 0;
+    }
+    .slideImage {
+        height: 100%;
+        margin: 0;
+    }
+}
 /* Адаптивность */
 @media (max-width: 768px) {
     .aboutPage {
@@ -217,45 +261,47 @@ p {
         font-size: 0.8rem;
     }
 }
+
+/* Модальное окно */
 .modal {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.6); /* Полупрозрачный фон */
+    background: rgba(0, 0, 0, 0.6);
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 1000;
-    opacity: 0; /* Начальное состояние для плавного появления */
-    visibility: hidden; /* Скрываем окно по умолчанию */
-    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out; /* Плавный переход */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 }
 
 .modal.show {
-    opacity: 1; /* Плавно делаем окно видимым */
-    visibility: visible; /* Показываем окно */
+    opacity: 1;
+    visibility: visible;
 }
 
 .modalContent {
     background: #fff;
     padding: 20px;
     border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Тень для модального окна */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     max-width: 80%;
-    max-height: 80%; /* Ограничение высоты */
-    overflow-y: auto; /* Скроллинг только по вертикали */
+    max-height: 80%;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
-    transform: scale(0.9); /* Уменьшение для анимации появления */
-    transition: transform 0.3s ease-in-out; /* Плавное увеличение окна */
+    transform: scale(0.9);
+    transition: transform 0.3s ease-in-out;
 }
 
 .modal.show .modalContent {
-    transform: scale(1); /* Масштабируем до 100% */
+    transform: scale(1);
 }
 
 .closeButton {
@@ -277,25 +323,9 @@ p {
     background-color: #f0f0f0;
     color: #222;
 }
-
-/* Слайдер */
-.slider {
-    width: 100%;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
+.myPhoto{
+    width: 500px;
 }
-
-.slideImage {
-    max-width: 90%;
-    max-height: 70%;
-    object-fit: cover; /* Вписываем изображение */
-    border-radius: 8px;
-    margin: 10px auto;
-}
-
 /* Адаптивность */
 @media (max-width: 768px) {
     .modalContent {
@@ -308,10 +338,6 @@ p {
         max-width: 100%;
         max-height: 60%;
     }
-    .closeButton {
-        top: 0;
-        right: 10px;
-    }
 }
 
 @media (max-width: 480px) {
@@ -322,35 +348,17 @@ p {
     }
 
     .slideImage {
-        max-width: 80%;
-        max-height: 50%;
+        max-width: 98%;
+        max-height: 98%;
     }
-    .closeButton {
-        top: 0;
-        right: 10px;
-    }
+
     .content {
         align-items: center;
         text-align: center;
     }
-    .image {
-        margin: 0 auto;
-    }
-    .mainAbout {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-    }
-    .myPhoto {
-        width: 20%;
-        top: 10px;
-        height: 15%;
-        border-radius: 10px;
-    }
-    .proff {
-        background: none;
-    }
 }
+
+/* Основные стили пути */
 .way {
     display: flex;
     flex-direction: column;
@@ -361,28 +369,7 @@ p {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.content {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 20px;
-}
-
-.myPhoto {
-    width: 35%;
-    max-width: 300px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    object-fit: cover;
-}
-
-.text {
-    flex: 1;
-    font-size: 16px;
-    line-height: 1.6;
-    color: #333;
-    text-align: justify;
-}
+/* Карусель */
 .carousel {
     position: relative;
     max-width: 100%;
@@ -391,13 +378,12 @@ p {
 
 .carousel-images {
     display: flex;
-    transition: transform 0.5s ease;
+    transition: transform 0.5s ease-in-out;
 }
 
 .carousel-images img {
     width: 100%;
     height: auto;
-    max-width: 100%;
 }
 
 button {
@@ -419,16 +405,38 @@ button.prev {
 button.next {
     right: 10px;
 }
-/* Адаптивность */
-@media (max-width: 768px) {
-    .content {
-        flex-direction: column;
-        align-items: center;
-    }
 
-    .myPhoto {
-        width: 80%;
-        max-width: 100%;
-    }
+
+.proff img {
+    width: 30%;
+    max-width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    object-fit: cover;
+    float: left; /* Обтекание текста */
+    margin-right: 50px;
 }
 
+.proff p, .proff ul {
+    flex: 1;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    text-align: justify;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .proff {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .proff img {
+        width: 100%;
+        max-width: 100%;
+        float: none;
+        margin: 0 auto 20px auto;
+    }
+}

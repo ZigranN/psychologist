@@ -16,6 +16,7 @@
     justify-content: space-between;
     align-items: center;
     position: relative;
+    padding: 0 20px;
 }
 
 .brand {
@@ -39,7 +40,10 @@
     font-size: 18px;
     color: #4c90af;
     transition: transform 0.3s ease, color 0.3s ease;
-    margin-left: 10px ;
+    margin-left: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .icon:hover {
@@ -59,6 +63,8 @@
     text-decoration: none;
     font-size: 16px;
     transition: color 0.3s ease;
+    display: inline-block;
+    padding: 10px 15px;
 }
 
 .link:hover {
@@ -114,6 +120,7 @@
         max-width: 100%;
         padding: 10px;
     }
+
     .burger {
         display: flex;
     }
@@ -131,6 +138,7 @@
         transform: translateY(-200%);
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         z-index: 99;
+        width: 100%;
     }
 
     .navOpen {
@@ -142,5 +150,6 @@
         width: 80%;
         text-align: center;
         padding: 10px 0;
+        display: block;
     }
 }

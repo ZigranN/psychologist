@@ -7,6 +7,7 @@
     background: linear-gradient(to bottom right, #eef3f8, #ffffff);
     font-family: 'Roboto', Arial, sans-serif;
 }
+
 .card {
     background-color: #ffffff;
     padding: 2rem;
@@ -35,6 +36,7 @@
     font-weight: 700;
     letter-spacing: 1px;
     text-transform: uppercase;
+    text-align: center;
 }
 
 .form {
@@ -53,62 +55,31 @@
     font-size: 1rem;
     font-weight: 600;
     color: #333;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
 }
 
-.input {
+.input, .textarea {
     padding: 0.75rem 1rem;
     font-size: 1rem;
     border: 1px solid #ccc;
     border-radius: 8px;
     background-color: #f9f9f9;
     transition: all 0.3s ease;
-    width: 70%;
+    width: 100%;
 }
 
-.input:focus {
+.input:focus, .textarea:focus {
     border-color: #0056b3;
     outline: none;
     background-color: #eef6ff;
 }
 
-.input::placeholder {
-    font-size: 0.95rem;
-    color: #888;
-}
-
-.input:hover {
+.input:hover, .textarea:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .textarea {
-    padding: 0.75rem 1rem;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    transition: all 0.3s ease;
-    width: 70%;
     min-height: 100px;
     resize: vertical;
-}
-
-.textarea:focus {
-    border-color: #0056b3;
-    outline: none;
-    background-color: #eef6ff;
-}
-
-.textarea::placeholder {
-    font-size: 0.95rem;
-    color: #888;
-}
-
-.textarea:hover {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .button {
@@ -122,6 +93,7 @@
     transition: all 0.3s ease;
     font-weight: 600;
     text-transform: uppercase;
+    width: 100%;
 }
 
 .button:hover {
@@ -150,11 +122,7 @@
         font-size: 1.8rem;
     }
 
-    .input {
-        font-size: 0.95rem;
-    }
-
-    .textarea {
+    .input, .textarea {
         font-size: 0.95rem;
     }
 
@@ -173,16 +141,14 @@
     .title {
         font-size: 1.6rem;
     }
+
     .label {
         display: flex;
         flex-direction: column;
-    }
-    .input {
-        padding: 0.6rem;
-        font-size: 0.9rem;
+        align-items: center;
     }
 
-    .textarea {
+    .input, .textarea {
         padding: 0.6rem;
         font-size: 0.9rem;
     }
@@ -191,4 +157,25 @@
         padding: 0.6rem;
         font-size: 0.9rem;
     }
+}
+.statusMessage {
+    margin-top: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Зеленый цвет для успешного сообщения */
+.success {
+    color: #155724;
+}
+
+/* Красный цвет для ошибки */
+.error {
+    color: #721c24;
+}
+
+/* Желтый цвет для загрузки */
+.loading {
+    color: #856404;
 }

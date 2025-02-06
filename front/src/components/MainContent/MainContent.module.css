@@ -16,7 +16,7 @@
 /* Левый блок */
 .shapeLeft {
     flex: 1;
-    height: 100vh;
+    height: 80vh;
     min-width: 300px;
     padding: 20px;
     background-color: #f0efee;
@@ -93,7 +93,7 @@
 /* Правый блок */
 .shapeRight {
     flex: 1;
-    height: 100vh;
+    height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -159,5 +159,4 @@
     .shapeRight {
         width: 100%;
     }
-
 }

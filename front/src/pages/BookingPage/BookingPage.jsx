@@ -11,32 +11,39 @@ const BookingPage = () => {
         contact: "",
         therapyRequest: "",
     });
-    const [statusMessage, setStatusMessage] = useState("");
+    const [statusMessage, setStatusMessage] = useState(null);
+    const [statusType, setStatusType] = useState(""); // "success" или "error"
 
     const sendMessageToTelegram = async (message) => {
-        const BOT_TOKEN = '7720061220:AAELg2OiCYYaiRjciv3byBU9PlsbQhNreVw';
-        const CHAT_ID = '1775514253';
+        const BOT_TOKEN = "7720061220:AAELg2OiCYYaiRjciv3byBU9PlsbQhNreVw";
+        const CHAT_ID = "1775514253";
         const TELEGRAM_API_URL = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
 
         try {
+            console.log("🚀 Отправка сообщения в Telegram...");
+
             const response = await fetch(TELEGRAM_API_URL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                     chat_id: CHAT_ID,
                     text: message,
-                    parse_mode: 'HTML',
+                    parse_mode: "HTML",
                 }),
             });
 
-            if (!response.ok) {
-                new Error('Ошибка при отправке сообщения.');
+            const responseData = await response.json();
+            console.log("📩 Ответ Telegram API:", responseData);
+
+            if (!response.ok || !responseData.ok) {
+                throw new Error(`Ошибка Telegram API: ${responseData.description}`);
             }
 
-            console.log('Сообщение успешно отправлено!');
+            console.log("✅ Сообщение успешно отправлено!");
+            return true;
         } catch (error) {
-            console.error('Ошибка:', error);
-            throw error;
+            console.error("❌ Ошибка при отправке:", error.message);
+            return false;
         }
     };
 
@@ -54,27 +61,32 @@ const BookingPage = () => {
         const { sessionType, format, name, contact } = formData;
 
         if (!sessionType) {
-            setStatusMessage("Пожалуйста, выберите формат записи.");
+            setStatusMessage("⚠️ Пожалуйста, выберите формат записи.");
+            setStatusType("error");
             return false;
         }
 
         if (!format) {
-            setStatusMessage("Пожалуйста, выберите тип консультации.");
+            setStatusMessage("⚠️ Пожалуйста, выберите тип консультации.");
+            setStatusType("error");
             return false;
         }
 
         if (!name.trim()) {
-            setStatusMessage("Пожалуйста, введите ваше имя.");
+            setStatusMessage("⚠️ Пожалуйста, введите ваше имя.");
+            setStatusType("error");
             return false;
         }
 
         if (!contact.trim()) {
-            setStatusMessage("Пожалуйста, введите ваш контактный телефон.");
+            setStatusMessage("⚠️ Пожалуйста, введите ваш контактный телефон.");
+            setStatusType("error");
             return false;
         }
 
         if (!/^[\d\s+()-]+$/.test(contact)) {
-            setStatusMessage("Пожалуйста, введите корректный номер телефона.");
+            setStatusMessage("⚠️ Пожалуйста, введите корректный номер телефона.");
+            setStatusType("error");
             return false;
         }
 
@@ -87,51 +99,58 @@ const BookingPage = () => {
             ...prevData,
             [name]: value,
         }));
+        setStatusMessage("");
+        setStatusType("");
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (!validateForm()) {
-            return;
-        }
+        if (!validateForm()) return;
 
         const { sessionType, format, name, contact, therapyRequest } = formData;
 
         const message = `
 📌 <b>Новая заявка:</b>
-- 📝 <b>Формат записи:</b> ${sessionType || 'Не указано'}
-- 🛋️ <b>Тип консультации:</b> ${format || 'Не указано'}
+- 📝 <b>Формат записи:</b> ${sessionType || "Не указано"}
+- 🛋️ <b>Тип консультации:</b> ${format || "Не указано"}
 - 🙋 <b>Имя:</b> ${name}
 - 📞 <b>Контакт:</b> ${contact}
-- 📝 <b>Запрос:</b> ${therapyRequest || 'Не указано'}
+- 📝 <b>Запрос:</b> ${therapyRequest || "Не указано"}
         `;
 
-        try {
-            await sendMessageToTelegram(message);
-            setStatusMessage("Заявка успешно отправлена!");
+        setStatusMessage("⏳ Отправка заявки...");
+        setStatusType("loading");
+
+        const success = await sendMessageToTelegram(message);
+
+        if (success) {
+            setStatusMessage("✅ Заявка успешно отправлена!");
+            setStatusType("success");
             setFormData({
-                sessionType: '',
-                format: '',
-                name: '',
-                contact: '',
-                therapyRequest: '',
+                sessionType: "",
+                format: "",
+                name: "",
+                contact: "",
+                therapyRequest: "",
             });
-        } catch  {
-            setStatusMessage("Ошибка при отправке заявки. Попробуйте позже.");
+        } else {
+            setStatusMessage("❌ Ошибка при отправке заявки. Попробуйте позже.");
+            setStatusType("error");
         }
     };
 
     return (
         <div className={styles.bookingPage}>
-
             <div className={styles.card}>
                 <h1 className={styles.title}>Запись на сессию</h1>
+
                 {statusMessage && (
-                    <div className={styles.statusMessage}>
+                    <div className={`${styles.statusMessage} ${styles[statusType]}`}>
                         <p>{statusMessage}</p>
                     </div>
                 )}
+
                 <form className={styles.form} onSubmit={handleSubmit}>
                     <label className={styles.label}>
                         Формат записи

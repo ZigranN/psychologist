@@ -1,82 +1,115 @@
+/* Общие стили для подвала */
 .footer {
     background-color: #4c90af;
     color: #fff;
     padding: 40px 20px;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .container {
     max-width: 1200px;
+    width: 100%;
     margin: 0 auto;
+    padding: 0 20px;
 }
 
+/* Верхняя секция */
 .topSection {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
+    width: 100%;
     margin-bottom: 20px;
 }
 
+/* Блоки внутри верхней секции */
 .about, .socials, .links {
-    margin: 5px 20px;
-    flex: 1;
-    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .heading {
-    font-size: 18px;
+    font-size: 20px;
     margin-bottom: 10px;
     font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+
 }
 
+/* Описание */
 .aboutText {
     font-size: 14px;
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
+/* Контактные данные */
+.phone {
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+    margin-top: 5px;
+    transition: color 0.3s ease-in-out;
+}
+
+.phone:hover {
+    color: #d4ebf9;
+}
+
+/* Ссылки на соцсети */
 .socialLinks {
     display: flex;
-    gap: 10px;
-    margin-top: 10px;
+    gap: 15px;
+    margin-top: 15px;
 }
 
-.link, .footerLink {
-    font-size: 18px;
+.link {
+    font-size: 24px;
     color: #fff;
-    padding: 5px 10px;
-    text-decoration: none;
+    padding: 8px;
     transition: transform 0.3s ease, color 0.3s ease;
 }
 
-.link:hover, .footerLink:hover {
-    color: #4c90af;
-    background-color: #fff;
-    transform: scale(1.1);
-    border-radius: 50%;
+.link:hover {
+    color: #d4ebf9;
+    transform: scale(1.2);
 }
 
-.phone {
-    font-size: 16px;
-    font-weight: bold;
-    text-decoration: none;
-}
-
+/* Быстрые ссылки */
 .linkList {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
 .linkList li {
-    margin-bottom: 5px;
+    margin-bottom: 8px;
 }
 
+.footerLink {
+    font-size: 16px;
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.footerLink:hover {
+    color: #d4ebf9;
+    text-decoration: underline;
+}
+
+/* Нижняя секция */
 .bottomSection {
     text-align: center;
     margin-top: 20px;
     font-size: 14px;
+}
+
+.creditText {
+    margin: 0;
 }
 
 .creditLink {
@@ -90,48 +123,40 @@
     text-decoration: underline;
 }
 
-/* Responsiveness */
+/* --- Адаптивность --- */
 @media (max-width: 768px) {
     .topSection {
-        flex-direction: column;
-        gap: 20px;
+        grid-template-columns: 1fr;
+        text-align: center;
     }
 
     .about, .socials, .links {
-        text-align: center;
+        align-items: center;
     }
+
     .socialLinks {
-        text-align: center;
-
-    }
-    .socials {
-        text-align: center;
-
+        justify-content: center;
     }
 }
 
 @media (max-width: 480px) {
     .phone {
-        font-size: 14px;
+        font-size: 16px;
     }
 
     .heading {
-        font-size: 16px;
+        font-size: 18px;
     }
 
     .footerLink {
         font-size: 14px;
     }
+
     .creditLink {
         font-size: 12px;
     }
+
     .socials {
-       display: flex;
-        flex-direction: column;
-        margin: 0 auto;
-    }
-    .link {
-        margin-left: 5px;
-        padding: 5px 10px;
+        align-items: center;
     }
 }

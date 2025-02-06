@@ -9,15 +9,20 @@
     justify-content: center;
     align-items: center;
     z-index: 1000;
+    padding: 15px;
+    box-sizing: border-box;
 }
 
 .modalContent {
     background: white;
-    padding: 20px;
+    padding: 25px;
     border-radius: 8px;
     max-width: 500px;
     width: 90%;
     position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    animation: fadeInModal 0.3s ease-in-out;
 }
 
 .closeButton {
@@ -26,24 +31,86 @@
     right: 10px;
     border: none;
     background: none;
-    font-size: 18px;
+    font-size: 22px;
+    font-weight: bold;
     cursor: pointer;
+    color: #666;
+    transition: color 0.3s ease-in-out;
+}
+
+.closeButton:hover {
+    color: #333;
 }
 
 .title {
     font-size: 22px;
     margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
 }
 
 .text {
     margin-bottom: 20px;
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
 }
 
 .detailsButton {
     background: #007bff;
     color: white;
     text-decoration: none;
-    padding: 10px 20px;
+    padding: 12px 24px;
     border-radius: 5px;
     display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.detailsButton:hover {
+    background: #0056b3;
+    transform: scale(1.05);
+}
+
+.detailsButton:active {
+    transform: scale(1);
+}
+
+/* Анимация */
+@keyframes fadeInModal {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Адаптивность */
+@media (max-width: 480px) {
+    .modalContent {
+        padding: 20px;
+        max-width: 90%;
+    }
+
+    .title {
+        font-size: 20px;
+    }
+
+    .text {
+        font-size: 14px;
+    }
+
+    .detailsButton {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+
+    .closeButton {
+        font-size: 20px;
+    }
 }
