@@ -1,4 +1,4 @@
-/* Общие стили для подвала */
+/* Общий контейнер футера */
 .footer {
     background-color: #4c90af;
     color: #fff;
@@ -7,6 +7,7 @@
     justify-content: center;
 }
 
+/* Контейнер с фиксированной максимальной шириной */
 .container {
     max-width: 1200px;
     width: 100%;
@@ -14,45 +15,47 @@
     padding: 0 20px;
 }
 
-/* Верхняя секция */
+/* Верхняя секция: используем CSS Grid для равномерного расположения блоков */
 .topSection {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
-    width: 100%;
     margin-bottom: 20px;
 }
 
 /* Блоки внутри верхней секции */
-.about, .socials, .links {
+.about,
+.socials,
+.links {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
 
+/* Заголовки блоков */
 .heading {
     font-size: 20px;
     margin-bottom: 10px;
     font-weight: bold;
     text-transform: uppercase;
     color: #fff;
-
 }
 
-/* Описание */
+/* Текст блока "О нас" */
 .aboutText {
     font-size: 14px;
     line-height: 1.6;
+    color: #ffffff;
 }
 
-/* Контактные данные */
+/* Контактный телефон */
 .phone {
     font-size: 18px;
     font-weight: bold;
     text-decoration: none;
     color: #fff;
     margin-top: 5px;
-    transition: color 0.3s ease-in-out;
+    transition: color 0.3s ease;
 }
 
 .phone:hover {
@@ -93,7 +96,7 @@
     font-size: 16px;
     color: #fff;
     text-decoration: none;
-    transition: color 0.3s ease-in-out;
+    transition: color 0.3s ease;
 }
 
 .footerLink:hover {
@@ -101,7 +104,7 @@
     text-decoration: underline;
 }
 
-/* Нижняя секция */
+/* Нижняя секция футера */
 .bottomSection {
     text-align: center;
     margin-top: 20px;
@@ -113,9 +116,9 @@
 }
 
 .creditLink {
-    color: #d4ebf9;
     text-decoration: none;
     font-weight: bold;
+    margin-left: 5px;
 }
 
 .creditLink:hover {
@@ -123,40 +126,36 @@
     text-decoration: underline;
 }
 
-/* --- Адаптивность --- */
+/* Адаптивность */
+
+/* На планшетах: верхняя секция переходит в один столбец, выравнивание по центру */
 @media (max-width: 768px) {
     .topSection {
         grid-template-columns: 1fr;
         text-align: center;
     }
-
-    .about, .socials, .links {
+    .about,
+    .socials,
+    .links {
         align-items: center;
     }
-
     .socialLinks {
         justify-content: center;
     }
 }
 
+/* На мобильных устройствах: уменьшаем размеры шрифтов */
 @media (max-width: 480px) {
     .phone {
         font-size: 16px;
     }
-
     .heading {
         font-size: 18px;
     }
-
     .footerLink {
         font-size: 14px;
     }
-
-    .creditLink {
+    .creditText {
         font-size: 12px;
-    }
-
-    .socials {
-        align-items: center;
     }
 }

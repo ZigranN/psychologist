@@ -86,8 +86,7 @@ h3 {
     justify-content: space-between; /* Равномерное распределение */
     align-items: center;
     flex-grow: 1; /* Позволяет карточке расти */
-    height: 100%; /* Растягивает по высоте */
-    min-height: 380px; /* Минимальная высота */
+    max-height: 380px; /* Минимальная высота */
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
@@ -106,6 +105,7 @@ h3 {
     font-size: 14px;
     margin-bottom: 20px;
     line-height: 1.6;
+    color: #ffffff;
 }
 
 .icons {
@@ -140,7 +140,7 @@ h3 {
 .cardButton {
     background: #fff;
     color: #4c90af;
-    padding: 12px 22px;
+    padding: 12px 10px;
     border-radius: 6px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
@@ -225,10 +225,10 @@ h3 {
     font-weight: bold;
     color: #555;
     cursor: pointer;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    padding: 10px;
+    position: absolute !important;
+    top: 5px !important;
+    right: 5px !important;
+    padding: 5px 10px;
     border-radius: 50%;
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
@@ -269,9 +269,23 @@ h3 {
     .cardButton,
     .tab {
         font-size: 10px;
+        padding: 10px ;
     }
 
     .icons i {
         font-size: 18px;
+    }
+    .modal {
+        width: 95% ;
+    }
+    .modalContent {
+        font-size: 11px;
+        padding: 5px ;
+    }
+    .modalContent p {
+        font-size: 11px;
+    }
+    .modalContent h2 {
+        font-size: 13px;
     }
 }

@@ -76,8 +76,7 @@
 .mainText {
     font-size: 14px;
     color: #666;
-    line-height: 1.8;
-    margin-top: 20px;
+    margin-top: 10px;
     text-align: justify;
     padding: 30px;
     text-indent: 30px;
@@ -152,11 +151,11 @@
         max-width: 90%;
     }
 
-    .mainText {
-        font-size: 12px;
-        text-indent: 30px;
-    }
     .shapeRight {
         width: 100%;
+    }
+    .mainText {
+        line-height: 1.0;
+        margin-top: 5px;
     }
 }

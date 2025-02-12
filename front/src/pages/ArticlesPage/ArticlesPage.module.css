@@ -28,3 +28,63 @@
     font-size: 16px;
     line-height: 1.5;
 }
+
+/* Адаптивные стили для экранов до 1024px */
+@media (max-width: 1024px) {
+    .articlesPage {
+        padding: 15px;
+        max-width: 90%;
+    }
+    .title {
+        font-size: 26px;
+    }
+    .article {
+        padding: 15px;
+    }
+    .articleTitle {
+        font-size: 22px;
+    }
+    .articleText {
+        font-size: 15px;
+    }
+}
+
+/* Адаптивные стили для экранов до 768px */
+@media (max-width: 768px) {
+    .articlesPage {
+        padding: 10px;
+        max-width: 95%;
+    }
+    .title {
+        font-size: 24px;
+    }
+    .article {
+        padding: 10px;
+    }
+    .articleTitle {
+        font-size: 20px;
+    }
+    .articleText {
+        font-size: 14px;
+    }
+}
+
+/* Адаптивные стили для экранов до 480px */
+@media (max-width: 480px) {
+    .articlesPage {
+        padding: 8px;
+        max-width: 100%;
+    }
+    .title {
+        font-size: 22px;
+    }
+    .article {
+        padding: 8px;
+    }
+    .articleTitle {
+        font-size: 18px;
+    }
+    .articleText {
+        font-size: 13px;
+    }
+}

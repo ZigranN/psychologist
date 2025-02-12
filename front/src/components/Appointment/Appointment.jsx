@@ -6,9 +6,13 @@ const Appointment = () => {
         name: "",
         contact: "",
     });
+    const [isModalOpen, setModalOpen] = useState(false);
+
     const [statusMessage, setStatusMessage] = useState(null);
     const [statusType, setStatusType] = useState(""); // "success" или "error"
-
+    const handleModalToggle = () => {
+        setModalOpen(!isModalOpen);
+    };
     const sendMessageToTelegram = async (message) => {
         const BOT_TOKEN = '7720061220:AAELg2OiCYYaiRjciv3byBU9PlsbQhNreVw';
         const CHAT_ID = '1775514253';
@@ -109,10 +113,43 @@ const Appointment = () => {
     return (
         <section className={styles.appointment}>
             <div className={styles.container}>
-                <div className={styles.image}>
-                    <img src="/psychologist/images/4.jpg" alt="Салтанат" />
+
+                {isModalOpen && (
+                    <div className={styles.modal}>
+                        <div className={styles.modalContent}>
+                            <button className={styles.closeButton} onClick={handleModalToggle}>
+                                &times;
+                            </button>
+                            <h2>Условия работы</h2>
+                            <ul>
+                                <li>Длительность сессии/ 60 минут</li>
+                                <li>При опоздании со стороны клиента время сессии сокращается на время опоздания.</li>
+                                <li>В случае опоздания с моей стороны, время продлевается, либо переносится на удобное
+                                    для вас время.
+                                </li>
+                                <li>Время бронируется по предварительной оплате не позднее чем за сутки до проведения
+                                    консультации.
+                                </li>
+                                <li>В случае, если вы отменили встречу менее чем за 24 часа - оплата не возвращается;
+                                </li>
+                                <li>В случае отмены встречи с моей стороны - возвращается сумма оплаты, либо я
+                                    предоставляю скидку на консультацию по вашему усмотрению.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                )}
+                <div>
+
                 </div>
+                <div className={styles.image}>
+                    <img src="/psychologist/images/4.jpg" alt="Салтанат"/>
+                </div>
+
                 <div className={styles.form}>
+                    <p className={styles.therapyTrigger} onClick={handleModalToggle}>
+                        Условия работы
+                    </p>
                     <h2 className={styles.title}>ЗАПИШИТЕСЬ НА ОЗНАКОМИТЕЛЬНУЮ ВСТРЕЧУ</h2>
                     <p>Где вы узнаете, соответствует ли вашему запросу мой подход</p>
                     <p className={styles.description}>
