@@ -41,7 +41,7 @@ const Header = () => {
         <header className={styles.header}>
             <div className={styles.container}>
                 <div className={styles.brand}>
-                    <NavLink to="/psychologist/" className={styles.title}>Салтанат Тагаева</NavLink>
+                    <NavLink to="/" className={styles.title}>Салтанат Тагаева</NavLink>
                 </div>
                 <button
                     className={`${styles.burger} ${isMenuOpen ? styles.burgerActive : ""}`}
@@ -53,16 +53,16 @@ const Header = () => {
                     <span className={styles.burgerLine}></span>
                 </button>
                 <div className={`${styles.nav} ${isMenuOpen ? styles.navOpen : ""}`}>
-                    <NavLink to="/psychologist/" className={styles.link} onClick={()=> setIsMenuOpen(false)}>
+                    <NavLink to="/" className={styles.link} onClick={()=> setIsMenuOpen(false)}>
                         Главная
                     </NavLink>
-                    <NavLink to="/psychologist/about" className={styles.link} onClick={()=> setIsMenuOpen(false)}>
+                    <NavLink to="/about" className={styles.link} onClick={()=> setIsMenuOpen(false)}>
                         Обо мне
                     </NavLink>
-                    <NavLink to="/psychologist/articles" className={styles.link} onClick={()=> setIsMenuOpen(false)}>
+                    <NavLink to="/articles" className={styles.link} onClick={()=> setIsMenuOpen(false)}>
                         Статьи
                     </NavLink>
-                    <NavLink to="/psychologist/booking" className={styles.link} onClick={()=> setIsMenuOpen(false)}>
+                    <NavLink to="/booking" className={styles.link} onClick={()=> setIsMenuOpen(false)}>
                         Запись
                     </NavLink>
                     <div style={{ display: 'flex' }}>

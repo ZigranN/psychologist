@@ -14,7 +14,7 @@ const Modal = ({ isOpen, title, content, articleId, onClose }) => {
                 </button>
                 <h2 className={styles.title}>{title}</h2>
                 <p className={styles.text}>{content}</p>
-                <NavLink to={`/psychologist/articles#${articleId}`} className={styles.detailsButton}>
+                <NavLink to={`/articles#${articleId}`} className={styles.detailsButton}>
                     Подробнее
                 </NavLink>
             </div>

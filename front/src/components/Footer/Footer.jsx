@@ -58,17 +58,17 @@ const Footer = () => {
                     <h3 className={styles.heading}>Быстрые ссылки</h3>
                     <ul className={styles.linkList}>
                         <li>
-                            <NavLink to="/psychologist/about" className={styles.footerLink}>
+                            <NavLink to="/about" className={styles.footerLink}>
                                 Обо мне
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to="/psychologist/articles" className={styles.footerLink}>
+                            <NavLink to="/articles" className={styles.footerLink}>
                                 Статьи
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to="/psychologist/booking" className={styles.footerLink}>
+                            <NavLink to="/booking" className={styles.footerLink}>
                                 Записаться
                             </NavLink>
                         </li>

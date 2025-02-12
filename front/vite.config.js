@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/psychologist/', // Укажи имя репозитория
+  base: '/', // Укажи имя репозитория
   plugins: [react()],
   server: {
     open: true, // Автоматически открывает браузер при запуске dev-сервера

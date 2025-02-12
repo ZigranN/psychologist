@@ -26,9 +26,9 @@
 }
 
 .closeButton {
-    position: absolute;
-    top: 10px;
-    right: 10px;
+    position: absolute !important;
+    top: 10px !important;
+    right: 10px !important;
     border: none;
     background: none;
     font-size: 22px;

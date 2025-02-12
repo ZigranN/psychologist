@@ -22,13 +22,13 @@ const About = () => {
                             Европейской Ассоциации Гештальт-терапии
                         </p>
                         <p>Регулярно участвую в обучающих программах по психотерапии и прохожу супервизии.</p>
-                        <NavLink to="/psychologist/about#education" className={styles.link}>
+                        <NavLink to="/about#education" className={styles.link}>
                             Образование и квалификации
                         </NavLink>
                     </div>
                 </div>
                 <div className={styles.image}>
-                    <img src="/psychologist/images/5.jpg" alt="Салтанат"/>
+                    <img src="/images/5.jpg" alt="Салтанат"/>
                 </div>
                 <div className={styles.methods}>
                     <h3>Моя основа в работе</h3>
@@ -37,7 +37,7 @@ const About = () => {
                         <li>Собственный опыт, проживание травматических переживаний...</li>
                         <li>Духовный поиск и путь становления собой.</li>
                     </ul>
-                    <NavLink to="/psychologist/about#myWay" className={styles.link}>
+                    <NavLink to="/about#myWay" className={styles.link}>
                         Нажмите, чтобы узнать подробнее
                     </NavLink>
                 </div>

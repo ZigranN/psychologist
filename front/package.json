@@ -1,14 +1,13 @@
 {
-  "name": "stagaeva",
+  "name": "saltanat-tagaeva",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "lint": "eslint .",
     "preview": "vite preview",
-    "deploy": "gh-pages -d dist"
+    "lint": "eslint ."
   },
   "dependencies": {
     "@react-pdf-viewer/core": "^3.12.0",

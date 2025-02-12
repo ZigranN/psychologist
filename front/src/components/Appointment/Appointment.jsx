@@ -143,7 +143,7 @@ const Appointment = () => {
 
                 </div>
                 <div className={styles.image}>
-                    <img src="/psychologist/images/4.jpg" alt="Салтанат"/>
+                    <img src="/images/4.jpg" alt="Салтанат"/>
                 </div>
 
                 <div className={styles.form}>
