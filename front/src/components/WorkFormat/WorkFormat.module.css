@@ -86,7 +86,7 @@ h3 {
     justify-content: space-between; /* Равномерное распределение */
     align-items: center;
     flex-grow: 1; /* Позволяет карточке расти */
-    max-height: 380px; /* Минимальная высота */
+    max-height: 400px; /* Минимальная высота */
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
