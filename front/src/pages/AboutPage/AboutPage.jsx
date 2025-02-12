@@ -172,7 +172,7 @@ const AboutPage = () => {
                 <h2 className={styles.subtitle}>Профессиональная деятельность</h2>
                 <div className={styles.proffdiv}>
                     <img
-                        src="/psychologist/images/photo2.jpg"
+                        src="/images/photo2.jpg"
                         alt="Салтанат"
                         className={styles.proffImage} // новый класс для float
                     />
@@ -227,7 +227,7 @@ const AboutPage = () => {
             <section className={`${styles.section} ${styles.myWay}`} id="myWay">
                 <h2 className={styles.subtitle}>Мой путь</h2>
                 <div className={styles.content}>
-                    <img src="/psychologist/images/7.jpg" alt="Мой путь" className={styles.myPhoto}/>
+                    <img src="/images/7.jpg" alt="Мой путь" className={styles.myPhoto}/>
                     <div className={styles.text}>
                         <p>
                             Мне всегда был интересен внутренний мир человека. И меня с ранних лет занимали вопросы
@@ -285,7 +285,7 @@ const AboutPage = () => {
                 {/* Новый контейнер для обтекания */}
                 <div className={styles.wrapper}>
                     <img
-                        src="/psychologist/images/photo.jpg"
+                        src="/images/photo.jpg"
                         alt="Фон"
                         className={styles.myPhoto}
                     />

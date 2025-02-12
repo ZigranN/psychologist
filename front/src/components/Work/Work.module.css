@@ -40,8 +40,13 @@
     cursor: pointer;
     transition: all 0.3s ease-in-out;
     text-align: center;
-    white-space: nowrap;
     min-width: 150px;
+    overflow: hidden;           /* скрываем переполнение */
+    text-overflow: ellipsis;
+    width: 200px;                /* Фиксированная ширина, измените по необходимости */
+    white-space: normal;         /* Разрешает перенос текста на новые строки */
+    word-wrap: break-word;       /* Перенос длинных слов (для старых браузеров) */
+    overflow-wrap: break-word;   /* Современный аналог для переноса длинных слов */
 }
 
 .tag:hover {
@@ -58,21 +63,19 @@
 }
 
 .button {
-    display: inline-flex;
     align-items: center;
     justify-content: center;
     background: #4c90af;
     color: #fff;
-    padding: 12px 25px;
     border: none;
     border-radius: 8px;
     font-weight: bold;
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
-    white-space: nowrap;
     min-width: 180px;
     text-align: center;
+
 }
 
 .button:hover {
