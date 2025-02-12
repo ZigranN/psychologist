@@ -9,10 +9,16 @@ const ArticlesPage = () => {
     useEffect(() => {
         const hash = location.hash.slice(1);
         if (hash) {
-            const element = document.getElementById(hash);
-            if (element) {
-                element.scrollIntoView({ behavior: "smooth" });
-            }
+            // Задержка в 100 мс, чтобы убедиться, что элементы уже отрисованы
+            setTimeout(() => {
+                const element = document.getElementById(hash);
+                if (element) {
+                    element.scrollIntoView({ behavior: "smooth" });
+                }
+            }, 100);
+        } else {
+            // Если hash отсутствует, скроллим к началу страницы
+            window.scrollTo({ top: 0, behavior: "smooth" });
         }
     }, [location]);
 
@@ -20,7 +26,7 @@ const ArticlesPage = () => {
         <div className={styles.articlesPage}>
             <h1 className={styles.title}>Статьи</h1>
             {articlesData.map((article) => (
-                <div key={article.id} id={article.id} className={styles.article}>
+                <div key={article.id} id={`${article.id}`} className={styles.article}>
                     <h2 className={styles.articleTitle}>
                         {article.title} или {article.shortText?.toLowerCase()}
                     </h2>
