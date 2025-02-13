@@ -1,7 +1,7 @@
 /* Основной фон шапки с легким градиентом и тенью */
 .header {
     background: linear-gradient(90deg, #ffffff, #f7f7f7);
-    padding: 20px 0;
+    padding: 5px 0;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     position: sticky;
     top: 0;
@@ -13,7 +13,7 @@
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -21,13 +21,18 @@
 
 /* Бренд и название сайта */
 .brand {
-    display: flex;
-    align-items: center;
-    gap: 15px;
+    align-items: flex-end;
+}
+.brand p {
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
 }
 
 .title {
     font-size: 28px;
+    margin-bottom: 0;
+    padding: 0;
     font-weight: 700;
     color: #2c3e50;
     text-decoration: none;
@@ -139,7 +144,7 @@
 /* Мобильные стили */
 @media (max-width: 768px) {
     .header {
-        padding: 15px 0;
+        padding: 5px 0;
     }
 
     .burger {

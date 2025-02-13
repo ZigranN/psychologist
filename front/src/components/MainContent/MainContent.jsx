@@ -6,9 +6,8 @@ const MainContent = () => (
         <div className={styles.contentContainer}>
             <div className={styles.shapeLeft}>
                 <div className={styles.box}>
-                    <p className={styles.title}>ХОЛИСТИЧЕСКАЯ ПСИХОЛОГИЯ</p>
+                    <p className={styles.title}>ДИПЛОМИРОВАННЫЙ ПСИХОЛОГ</p>
                     <p className={styles.intro}>
-                        Дипломированный психолог <br />
                         Гештальт-терапевт <br />
                         Интегрированный подход <br />
                         Ассоциированный член <br/><span>ПСАГС/ПКГА</span>

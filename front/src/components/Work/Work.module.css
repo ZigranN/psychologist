@@ -41,12 +41,7 @@
     transition: all 0.3s ease-in-out;
     text-align: center;
     min-width: 150px;
-    overflow: hidden;           /* скрываем переполнение */
-    text-overflow: ellipsis;
-    width: 200px;                /* Фиксированная ширина, измените по необходимости */
-    white-space: normal;         /* Разрешает перенос текста на новые строки */
-    word-wrap: break-word;       /* Перенос длинных слов (для старых браузеров) */
-    overflow-wrap: break-word;   /* Современный аналог для переноса длинных слов */
+
 }
 
 .tag:hover {
@@ -124,6 +119,11 @@
         font-size: 12px;
         padding: 8px 12px;
         min-width: 100px;
+        overflow: hidden;           /* скрываем переполнение */
+        text-overflow: ellipsis;
+        white-space: normal;         /* Разрешает перенос текста на новые строки */
+        word-wrap: break-word;       /* Перенос длинных слов (для старых браузеров) */
+        overflow-wrap: break-word;   /* Современный аналог для переноса длинных слов */
     }
 
     .button {

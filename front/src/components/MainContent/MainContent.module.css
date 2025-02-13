@@ -18,7 +18,7 @@
     flex: 1;
     height: 80vh;
     min-width: 300px;
-    padding: 20px;
+    padding: 15px;
     background-color: #f0efee;
     border-radius: 10px;
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
@@ -137,7 +137,7 @@
     }
 }
 
-@media (max-width: 390px) {
+@media (max-width: 480px) {
     .title {
         font-size: 24px;
     }
@@ -150,12 +150,20 @@
         font-size: 14px;
         max-width: 90%;
     }
+    .shapeLeft {
+        width: 95%;
+        margin: 10px;
 
+    }
     .shapeRight {
         width: 100%;
+        margin: 10px;
     }
     .mainText {
-        line-height: 1.0;
+        line-height: 1.5;
         margin-top: 5px;
+    }
+    .main {
+        padding: 5px;
     }
 }
