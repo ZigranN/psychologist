@@ -162,13 +162,15 @@
 
 @media (max-width: 480px) {
     .title {
-        font-size: 20px;
+        font-size: 15px;
     }
 
     .description {
+        font-size: 10px;
+    }
+    .form p {
         font-size: 12px;
     }
-
     .input {
         padding: 10px;
         font-size: 12px;
@@ -177,6 +179,18 @@
     .button {
         padding: 10px;
         font-size: 14px;
+    }
+    .appointment {
+        background-color: #f6f5f2;
+        padding: 0;
+    }
+    .form {
+        width: 83%;
+    }
+    .image {
+        width: 100%;
+        padding: 0;
+        margin: 0;
     }
 }
 .statusMessage {

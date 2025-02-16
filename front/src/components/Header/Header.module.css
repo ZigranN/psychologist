@@ -197,9 +197,11 @@
     }
     .title {
         font-size: 20px;
-        margin-left: 10px;
+        margin-left: 28px;
     }
     .preTitle {
         font-size: 20px;
+        padding: 0;
+        margin: 0;
     }
 }

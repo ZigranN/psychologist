@@ -86,7 +86,7 @@ const Footer = () => {
                         rel="noreferrer"
                         className={styles.creditLink}
                     >
-                        Nargiz Mamytova
+                        SKY RAY HUB
                     </a>
                 </p>
                 <p>© 2025</p>
