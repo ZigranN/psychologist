@@ -141,6 +141,11 @@
     .title {
         font-size: 24px;
     }
+    .contentContainer {
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
 
     .subtitle {
         font-size: 18px;
@@ -151,19 +156,19 @@
         max-width: 90%;
     }
     .shapeLeft {
-        width: 95%;
-        margin: 10px;
-
+        width: 90%;
+        margin-top: 10px;
     }
     .shapeRight {
-        width: 100%;
-        margin: 10px;
+        width: 95%;
     }
     .mainText {
         line-height: 1.5;
         margin-top: 5px;
     }
     .main {
-        padding: 5px;
+        text-align: center;
+        padding: 0;
+        margin: 0;
     }
 }

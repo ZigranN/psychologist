@@ -42,7 +42,7 @@ const Header = () => {
             <div className={styles.container}>
                 <div className={styles.brand}>
                     <NavLink to="/" className={styles.title}>Салтанат Тагаева</NavLink>
-                    <p>Холистическая психология</p>
+                    <p className={styles.preTitle}>Холистическая психология</p>
                 </div>
                 <button
                     className={`${styles.burger} ${isMenuOpen ? styles.burgerActive : ""}`}

@@ -195,4 +195,11 @@
     .navOpen {
         transform: translateY(0); /* Меню выезжает вниз, становясь видимым */
     }
+    .title {
+        font-size: 20px;
+        margin-left: 10px;
+    }
+    .preTitle {
+        font-size: 20px;
+    }
 }
