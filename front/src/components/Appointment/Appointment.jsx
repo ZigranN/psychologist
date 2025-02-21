@@ -146,7 +146,7 @@ const Appointment = () => {
 
                 <div className={styles.form}>
                     <p className={styles.therapyTrigger} onClick={handleModalToggle}>
-                        Условия работы
+                        Условия работы {isModalOpen ? "▲" : "▼"}
                     </p>
                     <h2 className={styles.title}>ЗАПИШИТЕСЬ НА ОЗНАКОМИТЕЛЬНУЮ ВСТРЕЧУ</h2>
                     <p>Где вы узнаете, соответствует ли вашему запросу мой подход</p>

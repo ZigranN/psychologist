@@ -23,7 +23,7 @@ const About = () => {
                         </p>
                         <p>Регулярно участвую в обучающих программах по психотерапии и прохожу супервизии.</p>
                         <NavLink to="/about#education" className={styles.link}>
-                            Образование и квалификации
+                            Образование и квалификации ▼
                         </NavLink>
                     </div>
                 </div>
@@ -38,14 +38,14 @@ const About = () => {
                         <li>Духовный поиск и путь становления собой.</li>
                     </ul>
                     <NavLink to="/about#myWay" className={styles.link}>
-                        Нажмите, чтобы узнать подробнее
+                        Нажмите, чтобы узнать подробнее ▼
                     </NavLink>
                 </div>
 
             </div>
             <div className={styles.theraphy}>
                 <h5 className={styles.therapyTrigger} onClick={handleModalToggle}>
-                    Кому нужна психотерапия?
+                    Кому нужна психотерапия? {isModalOpen ? "▲" : "▼"}
                 </h5>
             </div>
             {isModalOpen && (

@@ -101,7 +101,7 @@
 
 /* Триггер открытия модального окна */
 .therapyTrigger {
-    cursor: pointer;
+    cursor: inherit;
     color: #333;
     margin-top: 10px;
     font-size: 24px;

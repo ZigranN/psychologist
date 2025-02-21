@@ -44,7 +44,7 @@ const WorkFormat = () => {
                         <div>
                             <div className={styles.theraphy}>
                                 <p className={styles.therapyTrigger} onClick={handleModalToggle2}>
-                                    Что дает личная терапия ?
+                                    Что дает личная терапия ? {isModalOpen ? "▲" : "▼"}
                                 </p>
                             </div>
                             <div className={styles.cardBlock}>
