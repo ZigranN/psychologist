@@ -1,7 +1,7 @@
 import styles from "./Footer.module.css";
 import {NavLink, useLocation} from "react-router-dom";
 import {useEffect} from "react";
-
+import b17 from './../../../public/images/b17.png';
 const Footer = () => {
     const location = useLocation()
 
@@ -29,6 +29,7 @@ const Footer = () => {
                     <div className={styles.socialLinks}>
                         <a
                             href="https://api.whatsapp.com/send?phone=996555922289"
+                            target="_blank"
                             className={styles.link}
                             aria-label="WhatsApp"
                         >
@@ -36,6 +37,7 @@ const Footer = () => {
                         </a>
                         <a
                             href="https://t.me/saltanat_tg"
+                            target="_blank"
                             className={styles.link}
                             aria-label="Telegram"
                         >
@@ -49,6 +51,9 @@ const Footer = () => {
                             aria-label="Instagram"
                         >
                             <i className="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.b17.ru/tagaeva_saltanat/" target="_blank">
+                            <img src={b17} alt="Психологи" width='50px' style={{marginTop: '10px'}}/>
                         </a>
                     </div>
                 </div>
@@ -91,6 +96,7 @@ const Footer = () => {
                 </p>
                 <p>© 2025</p>
             </div>
+
         </div>
     </footer>
 )};
