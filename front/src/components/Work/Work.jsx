@@ -20,6 +20,7 @@ const Work = () => {
     return (
         <section className={styles.work}>
             <h2 className={styles.title}>Лишь некоторые запросы на терапию : </h2>
+            <p className={styles.subtitle}>Нажмите на интересующий вас запрос, чтобы узнать больше</p>
             <div className={styles.tags}>
                 {articlesData.map((article) => (
                     <button
