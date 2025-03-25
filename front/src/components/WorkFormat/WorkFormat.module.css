@@ -79,16 +79,32 @@ h3 {
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     max-width: 350px;
+    width: 100%;
     text-align: center;
     margin: 0 auto;
-    display: flex; /* Делаем карточку флекс-контейнером */
-    flex-direction: column; /* Элементы внутри идут вертикально */
-    justify-content: space-between; /* Равномерное распределение */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    flex-grow: 1; /* Позволяет карточке расти */
-    max-height: 400px; /* Минимальная высота */
+    flex-grow: 1;
+    /* Удаляем max-height */
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
+
+.cardButton {
+    background: #fff;
+    color: #4c90af;
+    padding: 12px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    font-weight: bold;
+    width: 100%; /* Занимает всю ширину карточки */
+    max-width: 220px; /* Но не больше, чтобы кнопка не стала слишком большой */
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+
 
 .card:hover {
     transform: translateY(-5px);
@@ -135,18 +151,6 @@ h3 {
     display: flex;
     flex-direction: column;
     gap: 10px;
-}
-
-.cardButton {
-    background: #fff;
-    color: #4c90af;
-    padding: 12px 10px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    font-weight: bold;
-    min-width: 180px;
-    white-space: nowrap;
 }
 
 .cardButton:hover {
@@ -260,31 +264,40 @@ h3 {
         font-size: 12px;
     }
 }
-
 @media (max-width: 480px) {
     .title {
         font-size: 22px;
     }
 
+    .card {
+        padding: 16px;
+    }
+
     .cardButton,
     .tab {
-        font-size: 10px;
-        padding: 10px ;
+        font-size: 12px;
+        padding: 10px;
+        width: 100%;
+        max-width: 100%;
     }
 
     .icons i {
         font-size: 18px;
     }
+
     .modal {
-        width: 95% ;
+        width: 95%;
     }
+
     .modalContent {
         font-size: 11px;
-        padding: 5px ;
+        padding: 10px;
     }
+
     .modalContent p {
         font-size: 11px;
     }
+
     .modalContent h2 {
         font-size: 13px;
     }

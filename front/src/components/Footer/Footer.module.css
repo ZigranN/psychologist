@@ -41,11 +41,13 @@
     color: #fff;
 }
 
-/* Текст блока "О нас" */
 .aboutText {
     font-size: 14px;
     line-height: 1.6;
     color: #ffffff;
+    word-break: break-word; /* добавлено */
+    overflow-wrap: break-word; /* добавлено */
+    hyphens: auto; /* для переноса слов по слогам при необходимости */
 }
 
 /* Контактный телефон */
