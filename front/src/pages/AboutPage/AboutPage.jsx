@@ -1,24 +1,26 @@
 import { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import "swiper/css/effect-fade";
+import "swiper/css/navigation";
 import "swiper/css/autoplay";
-import { Autoplay } from "swiper/modules";
+import { Autoplay, Navigation } from "swiper/modules";
 import { useLocation } from "react-router-dom";
 import { useSpring, animated } from "react-spring";
 import { useGesture } from "@use-gesture/react";
 import styles from "./AboutPage.module.css";
 
+
 const AboutPage = () => {
-    // Состояния модальных окон и выбранного изображения
-    const [isDocumentModalOpen, setDocumentModalOpen] = useState(false);
-    const [isImageModalOpen, setImageModalOpen] = useState(false);
-    const [selectedImage, setSelectedImage] = useState(null);
+    const [isGalleryModalOpen, setGalleryModalOpen] = useState(false);
+    const [galleryIndex, setGalleryIndex] = useState(null);
+    const [isDocsModalOpen, setDocsModalOpen] = useState(false);
+    const [docsIndex, setDocsIndex] = useState(null);
     const [autoplay, setAutoplay] = useState(true);
     const location = useLocation();
     const modalImageRef = useRef(null);
 
-
+    const galleryImages = Array.from({ length: 10 }, (_, index) => `/images/video${index + 1}.jpg`);
+    const documentImages = Array.from({ length: 15 }, (_, index) => `/images/educ${index + 1}.jpg`);
 
     // Плавный скролл по якорям
     useEffect(() => {
@@ -32,7 +34,7 @@ const AboutPage = () => {
         }
     }, [location]);
 
-    // React Spring для увеличенного изображения
+    // Анимации для zoom / drag
     const [{ scale, x, y }, api] = useSpring(() => ({
         scale: 1,
         x: 0,
@@ -41,19 +43,22 @@ const AboutPage = () => {
     }));
 
     const bind = useGesture({
-        onPinch: ({ offset: [d] }) =>
-            api.start({ scale: Math.max(1, Math.min(5, 1 + d / 200)) }),
-        onDrag: ({ offset: [dx, dy] }) => api.start({ x: dx, y: dy }),
+        onPinch: ({ offset: [d] }) => {
+            void api.start({ scale: Math.max(1, Math.min(5, 1 + d / 200)) });
+        },
+        onDrag: ({ offset: [dx, dy] }) => {
+            void api.start({ x: dx, y: dy });
+        },
         onWheel: ({ event }) => {
             event.preventDefault();
             const newScale = Math.max(1, Math.min(scale.get() + event.deltaY * -0.001, 5));
-            api.start({ scale: newScale });
+            void api.start({ scale: newScale });
         },
     });
 
-    // Блокировка прокрутки фона при открытии модальных окон
+
     useEffect(() => {
-        if (isDocumentModalOpen || isImageModalOpen) {
+        if (isGalleryModalOpen || isDocsModalOpen) {
             document.body.style.overflow = "hidden";
         } else {
             document.body.style.overflow = "auto";
@@ -61,112 +66,118 @@ const AboutPage = () => {
         return () => {
             document.body.style.overflow = "auto";
         };
-    }, [isDocumentModalOpen, isImageModalOpen]);
+    }, [isGalleryModalOpen, isDocsModalOpen]);
 
-    // Открытие полноэкранного модального окна для увеличенного изображения
-    const openImageModal = (image) => {
-        setSelectedImage(image);
-        setImageModalOpen(true);
+    const openGalleryModal = (index) => {
+        setGalleryIndex(index);
+        setGalleryModalOpen(true);
         setAutoplay(false);
     };
 
-    // При клике по миниатюре документа: закрываем окно с сеткой и открываем полноэкранное окно
-    const openFullScreenDocument = (image) => {
-        setDocumentModalOpen(false);
-        openImageModal(image);
-    };
-
-    const closeImageModal = () => {
-        setImageModalOpen(false);
-        setSelectedImage(null);
+    const closeGalleryModal = () => {
+        setGalleryModalOpen(false);
+        setGalleryIndex(null);
         setAutoplay(true);
         api.start({ scale: 1, x: 0, y: 0 });
     };
 
-    // Пример массивов изображений
-    const images = Array.from({ length: 15 }, (_, index) => `/images/educ${index + 1}.jpg`);
-    const imagesForVideo = Array.from({ length: 10 }, (_, index) => `/images/video${index + 1}.jpg`);
+    const openDocsModal = (index) => {
+        setDocsIndex(index);
+        setDocsModalOpen(true);
+    };
+
+    const closeDocsModal = () => {
+        setDocsModalOpen(false);
+        setDocsIndex(null);
+        api.start({ scale: 1, x: 0, y: 0 });
+    };
 
     return (
         <div className={styles.aboutPage}>
             <h1 className={styles.title}>Обо мне</h1>
 
-            {/* Основной слайдер (например, для фоновых изображений) */}
             <Swiper
                 modules={[Autoplay]}
-                autoplay={autoplay ? {delay: 3000, disableOnInteraction: false} : false}
+                autoplay={autoplay ? { delay: 3000, disableOnInteraction: false } : false}
                 speed={2000}
                 loop
                 slidesPerView="auto"
                 freeMode={true}
                 className={styles.slider}
             >
-                {imagesForVideo.map((image, index) => (
+                {galleryImages.map((image, index) => (
                     <SwiperSlide key={index} className={styles.fadeSlide}>
                         <img
                             src={image}
-                            alt={`Документ ${index + 1}`}
+                            alt={`Фото ${index + 1}`}
                             className={styles.slideImage}
-                            onClick={() => openImageModal(image)}
+                            onClick={() => openGalleryModal(index)}
                         />
                     </SwiperSlide>
                 ))}
             </Swiper>
 
-            {/* Кнопка для просмотра всех документов */}
-
-
-            {/* Модальное окно для документов (сеткой миниатюр) */}
-            {isDocumentModalOpen && (
-                <div
-                    className={styles.documentModalContainer}
-                    onClick={() => setDocumentModalOpen(false)}
-                >
-                    <div className={styles.documentModalContent} onClick={(e) => e.stopPropagation()}>
-                        <button
-                            className={styles.documentModalCloseButton}
-                            onClick={() => setDocumentModalOpen(false)}
-                        >
-                            &times;
-                        </button>
-                        <div className={styles.documentGrid}>
-                            {images.map((image, index) => (
-                                <img
-                                    key={index}
-                                    src={image}
-                                    alt={`Документ ${index + 1}`}
-                                    className={styles.documentThumbnail}
-                                    onClick={() => openFullScreenDocument(image)}
-                                />
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            )}
-
-            {/* Модальное окно для увеличенного изображения */}
-            {isImageModalOpen && (
-                <div className={styles.modalImageContainer} onClick={closeImageModal}>
+            {isGalleryModalOpen && (
+                <div className={styles.modalImageContainer} onClick={closeGalleryModal}>
                     <div className={styles.modalImageContent} onClick={(e) => e.stopPropagation()}>
-                        <button className={styles.modalImageCloseButton} onClick={closeImageModal}>
+                        <button className={styles.modalImageCloseButton} onClick={closeGalleryModal}>
                             &times;
                         </button>
-                        {selectedImage && (
-                            <animated.img
-                                ref={modalImageRef}
-                                src={selectedImage}
-                                alt="Увеличенное изображение"
-                                className={styles.modalImage}
-                                {...bind()}
-                                style={{scale, x, y, touchAction: "none"}}
-                            />
-                        )}
+                        <Swiper
+                            modules={[Navigation]}
+                            initialSlide={galleryIndex}
+                            navigation
+                            loop
+                            spaceBetween={20}
+                            className={styles.modalImageSlider}
+                        >
+                            {galleryImages.map((img, index) => (
+                                <SwiperSlide key={index}>
+                                    <animated.img
+                                        ref={modalImageRef}
+                                        src={img}
+                                        alt={`Фото ${index + 1}`}
+                                        className={styles.modalImage}
+                                        {...bind()}
+                                        style={{ scale, x, y, touchAction: "none" }}
+                                    />
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
                     </div>
                 </div>
             )}
 
-            {/* Дополнительные секции страницы */}
-
+            {isDocsModalOpen && (
+                <div className={styles.modalImageContainer} onClick={closeDocsModal}>
+                    <div className={styles.modalImageContent} onClick={(e) => e.stopPropagation()}>
+                        <button className={styles.modalImageCloseButton} onClick={closeDocsModal}>
+                            &times;
+                        </button>
+                        <Swiper
+                            modules={[Navigation]}
+                            initialSlide={docsIndex}
+                            navigation
+                            loop
+                            spaceBetween={20}
+                            className={styles.modalImageSlider}
+                        >
+                            {documentImages.map((img, index) => (
+                                <SwiperSlide key={index}>
+                                    <animated.img
+                                        ref={modalImageRef}
+                                        src={img}
+                                        alt={`Документ ${index + 1}`}
+                                        className={styles.modalImage}
+                                        {...bind()}
+                                        style={{ scale, x, y, touchAction: "none" }}
+                                    />
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
+                    </div>
+                </div>
+            )}
             {/* Секция "Профессиональная деятельность" */}
             <section className={`${styles.section} ${styles.proff}`}>
                 <h2 className={styles.subtitle}>Профессиональная деятельность</h2>
@@ -178,18 +189,18 @@ const AboutPage = () => {
                     />
                     <div>
 
-                    <p>Я работаю со взрослыми и подростками по вопросам:</p>
-                    <ul className={styles.list}>
-                        <li>Возрастные и духовные кризисы;</li>
-                        <li>Психологические травмы;</li>
-                        <li>Разрешение эмоциональных блоков и проблемных паттернов поведения;</li>
-                        <li>Вопросы выбора и поиска жизненных целей;</li>
-                        <li>Более углубленное самопознание;</li>
-                        <li>Духовное развитие;</li>
-                        <li>Исследование отношений (детско-родительских, супружеских, парных);</li>
-                        <li>Экзистенциальные проблемы (одиночество, смысложизненность, поиск своего Я);</li>
-                        <li>Развитие осознанности и эмоциональной саморегуляции.</li>
-                    </ul>
+                        <p>Я работаю со взрослыми и подростками по вопросам:</p>
+                        <ul className={styles.list}>
+                            <li>Возрастные и духовные кризисы;</li>
+                            <li>Психологические травмы;</li>
+                            <li>Разрешение эмоциональных блоков и проблемных паттернов поведения;</li>
+                            <li>Вопросы выбора и поиска жизненных целей;</li>
+                            <li>Более углубленное самопознание;</li>
+                            <li>Духовное развитие;</li>
+                            <li>Исследование отношений (детско-родительских, супружеских, парных);</li>
+                            <li>Экзистенциальные проблемы (одиночество, смысложизненность, поиск своего Я);</li>
+                            <li>Развитие осознанности и эмоциональной саморегуляции.</li>
+                        </ul>
 
                     </div>
                     {/* Очистка float */}
@@ -218,7 +229,7 @@ const AboutPage = () => {
                     <li>Психотерапия для нарцисса;</li>
                     <li>Психопотология характера / Новый опыт и знания о психической сфере в норме и патологии</li>
                 </ul>
-                <button onClick={() => setDocumentModalOpen(true)} className={styles.viewAllButton}>
+                <button onClick={() => openDocsModal()} className={styles.viewAllButton}>
                     Просмотреть все документы
                 </button>
             </section>

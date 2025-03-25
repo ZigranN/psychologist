@@ -45,6 +45,7 @@
     font-size: 14px;
     line-height: 1.6;
     color: #ffffff;
+    max-width: 90%;
     word-break: break-word; /* добавлено */
     overflow-wrap: break-word; /* добавлено */
     hyphens: auto; /* для переноса слов по слогам при необходимости */
