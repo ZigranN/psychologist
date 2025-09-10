@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
-import styles from  './Header.module.css';
+import styles from './Header.module.css';
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -8,6 +8,7 @@ const Header = () => {
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
+
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [location.pathname]);
@@ -20,7 +21,6 @@ const Header = () => {
         const handleOutsideClick = (event) => {
             const menu = document.querySelector(`.${styles.nav}`);
             const burger = document.querySelector(`.${styles.burger}`);
-            // Если клик вне меню и кнопки-бургера, закрываем меню
             if (menu && burger && !menu.contains(event.target) && !burger.contains(event.target)) {
                 closeMenu();
             }
@@ -90,6 +90,14 @@ const Header = () => {
                             className={styles.icon}
                         >
                             <i className="fab fa-instagram"></i>
+                        </a>
+                        <a
+                            href="https://www.facebook.com/salttaga/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={styles.icon}
+                        >
+                            <i className="fab fa-facebook-f"></i>
                         </a>
                     </div>
                 </div>

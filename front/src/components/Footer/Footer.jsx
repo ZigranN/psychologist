@@ -52,6 +52,15 @@ const Footer = () => {
                         >
                             <i className="fab fa-instagram"></i>
                         </a>
+                        <a
+                            href="https://www.facebook.com/salttaga/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={styles.link}
+                        >
+                            <i className="fab fa-facebook-f"></i>
+                        </a>
+
                         <a href="https://www.b17.ru/tagaeva_saltanat/" target="_blank">
                             <img src={b17} alt="Психологи" width='50px' style={{marginTop: '15px'}}/>
                         </a>
