@@ -1,176 +1,140 @@
-/* Основной контейнер */
+/* ==== БАЗА ==== */
 .main {
     margin: 0 auto;
     padding: 20px;
     max-width: 1200px;
 }
 
+/* Grid — mobile-first */
 .contentContainer {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr; /* mobile: одна колонка */
     gap: 20px;
-    align-items: center;
-    justify-content: center;
+    align-items: start;
+    justify-items: center;
+}
+.box {
+     text-align: center;
 }
 
-/* Левый блок */
-.shapeLeft {
-    flex: 1;
-    height: 60vh;
-    min-width: 300px;
-    padding: 15px;
-    background-color: #f0efee;
-    border-radius: 10px;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.shapeLeft:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
-}
-
-.subtitle {
-    font-size: 24px;
-    font-weight: bold;
-    color: #4c90af;
-    margin-bottom: 20px;
-}
-
-.title {
-    font-size: 28px;
-    font-weight: 700;
-    color: #333;
-    margin-bottom: 15px;
+/* Универсальная карточка */
+.card {
+    width: 100%;
+    min-width: 280px;
+    padding: 16px;
+    background: linear-gradient(180deg, color-mix(in srgb, var(--brand-50), #fff 30%), #ffffff);
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    transition: transform .3s ease, box-shadow .3s ease;
     text-align: center;
 }
+@media (hover: hover) {
+  .card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+  }
+}
 
+/* Текст/типографика */
 .intro {
-    font-size: 16px;
-    color: #555;
+    font-size: var(--fs-lg);
+    color: var(--muted);
     line-height: 1.6;
-    margin: 50px 20px 20px 20px;
+    margin: 20px 10px 12px;
     text-align: center;
+    overflow-wrap: anywhere;
+}
+
+.mainText {
+    font-size: var(--fs-body);
+    color: #24323b;
+    margin: 8px 0 0;
+    text-align: left;
+    line-height: 1.75;
+    padding: 16px 18px;
+    border-left: 3px solid #4c90af20;
+    background: #ffffffa8;
+    border-radius: 8px;
+    overflow-wrap: anywhere;
+}
+
+.quoteAuthor {
+    display: block;
+    margin-top: 8px;
+    color: var(--brand-700);
+    font-style: italic;
+    text-align: right;
 }
 
 /* Кнопка */
 .button {
-    background-color: #fff;
-    border: 2px solid #4c90af;
-    color: #4577a0;
-    font-size: 16px;
-    padding: 12px 25px;
-    cursor: pointer;
-    border-radius: 10px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.button:hover {
-    background-color: #4c90af;
+    display: inline-block;
+    margin-top: 14px;
+    background: var(--accent-grad);
+    border: none;
     color: #fff;
-    transform: scale(1.05);
+    font-size: clamp(14px, 0.4vw + 14px, 16px);
+    padding: 12px 24px;
+    cursor: pointer;
+    border-radius: 12px;
+    transition: box-shadow .25s ease, transform .25s ease, color .25s ease, background-color .25s ease;
+    text-decoration: none;
+    box-shadow: 0 0 0 rgba(76,144,175,0);
+}
+@media (hover: hover) {
+  .button:hover {
+      box-shadow: 0 8px 24px rgba(76,144,175,.35);
+      transform: translateY(-1px);
+  }
+}
+.button:focus-visible {
+    outline: var(--focus-ring);
+    outline-offset: 2px;
 }
 
-/* Основной текст */
-.mainText {
-    font-size: 14px;
-    color: #666;
-    margin: 10px;
-    text-align: justify;
-    padding: 30px;
-    text-indent: 30px;
+/* ==== КАРТИНКА ==== */
+.imageFrame {
+    width: 100%;
+    aspect-ratio: 3 / 4;     /* портретная рамка */
+    border-radius: 12px;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    background: #fafafa;
+    box-shadow: 0 6px 12px rgba(0,0,0,.1);
+    transition: transform .3s ease;
+}
+@media (hover: hover) {
+  .imageFrame:hover { transform: scale(1.01); }
 }
 
-.quoteAuthor {
-    font-style: italic;
-    color: #4c90af;
-    margin-top: 10px;
-    text-align: center;
+.imageEl {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;        /* заполняем рамку, красиво на десктопе */
+    object-position: center;
+    display: block;
 }
 
-/* Правый блок */
-.shapeRight {
-    flex: 1;
-    height: 74vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding-top: 10px;
-}
+/* ==== БРЕЙКПОИНТЫ ==== */
 
-.image {
-    max-width: 91%;
-    border-radius: 10px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-
-}
-
-.image:hover {
-    transform: scale(1.05);
-}
-
-/* Мобильные стили */
-@media (max-width: 768px) {
+/* Tablet ≥768px — две колонки */
+@media (min-width: 768px) {
     .contentContainer {
-        flex-direction: column;
+        grid-template-columns: 1fr 1fr;
+        align-items: stretch;
     }
-
-    .shapeLeft, .shapeRight {
-        flex: none;
-        width: 90%;
-        height: auto;
-    }
-
-    .title {
-        font-size: 28px;
-    }
-
-    .subtitle {
-        font-size: 20px;
-    }
-
-    .button {
-        width: 100%;
-    }
+    .intro { margin-top: 28px; }
 }
 
+/* Desktop ≥1024px — чуть больше “воздуха” */
+@media (min-width: 1024px) {
+    .mainText { padding: 20px 24px; }
+}
+
+/* Узкие экраны ≤480px — компактнее шрифты и отступы */
 @media (max-width: 480px) {
-    .title {
-        font-size: 24px;
-    }
-    .contentContainer {
-        margin: 0;
-        padding: 0;
-        text-align: center;
-    }
-
-    .subtitle {
-        font-size: 18px;
-    }
-
-    .button {
-        font-size: 14px;
-        max-width: 90%;
-    }
-    .shapeLeft {
-        width: 90%;
-        margin-top: 0;
-        height: 50%;
-    }
-    .image {
-        width: 80%;
-        height: 50%;
-    }
-    .mainText {
-        line-height: 1.5;
-        margin-top: 5px;
-    }
-    .main {
-        text-align: center;
-        padding: 0;
-        margin: 0;
-    }
+    .main { padding: 12px; }
+    .button { font-size: 14px; width: 100%; max-width: 92%; }
+    .imageFrame { aspect-ratio: 4 / 5; }     /* на очень узких — чуть “уже” портрет */
 }

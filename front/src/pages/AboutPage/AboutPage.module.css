@@ -1,130 +1,165 @@
-/* Глобальные настройки типографики */
-body,
-h1, h2, h3, h4, h5, h6,
-p,
-li,
-button,
-input,
-select,
-textarea {
-    font-family: Arial, sans-serif;
-    color: #333;
-    /* Можно задать базовый размер – например, 16px для основного текста */
-    font-size: 16px;
-    line-height: 1.6;
+/***** TOKENS *****/
+.aboutPage {
+    --bg: #f9f9f9;
+    --card: #fff;
+    --text: #1f2328;
+    --muted: #4a4f57;
+    --primary: #4c90af;
+    --primary-strong: #3c7c97;
+    --heading: #003366;
+    --accent: #0056b3;
+
+    --shadow: 0 4px 10px rgba(0,0,0,.08);
+    --shadow-lg: 0 8px 15px rgba(0,0,0,.2);
+
+    --radius: 12px;
+    --space-1: 6px;
+    --space-2: 10px;
+    --space-3: 14px;
+    --space-4: 16px;
+    --space-5: 20px;
+    --space-6: 24px;
+
+    --fs-base: clamp(15px, .28vw + 14px, 16.5px);
+    --fs-h1: clamp(26px, 1.6vw + 20px, 40px);
+    --fs-h2: clamp(20px, 1vw + 18px, 28px);
+    --fs-h3: clamp(16px, .7vw + 15px, 22px);
+
+    color: var(--text);
+    background-color: var(--bg);
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-/* Общий контейнер */
+/***** GLOBAL NORMALIZE FROM MODULE *****/
+:global(body, h1, h2, h3, h4, h5, h6, p, li, button, input, select, textarea){
+    font-family: inherit;
+    color: inherit;
+    font-size: var(--fs-base);
+    line-height: 1.65;
+}
+
+/***** LAYOUT *****/
 .aboutPage {
     max-width: 1200px;
-    margin: auto;
-    padding: 1rem;
-    background-color: #f9f9f9;
+    margin: 0 auto;
+    padding: var(--space-5);
 }
 
-/* Заголовки */
+.section {
+    padding: var(--space-5);
+    background-color: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: var(--space-5);
+}
+
+/***** HEADINGS *****/
 .title {
-    font-size: 2.5rem;
+    font-size: var(--fs-h1);
     text-align: center;
-    color: #0056b3;
-    margin-bottom: 1rem;
+    color: var(--accent);
+    margin-bottom: var(--space-4);
 }
 
 .subtitle {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-    color: #003366;
-    border-left: 5px solid #0056b3;
-    padding-left: 15px;
+    font-size: var(--fs-h2);
+    color: var(--heading);
+    margin-bottom: var(--space-4);
+    border-left: 5px solid var(--accent);
+    padding-left: 14px;
 }
 
-/* Кнопка для просмотра документов */
+.note {
+    font-size: var(--fs-h3);
+    text-align: center;
+    color: var(--muted);
+    margin-top: var(--space-4);
+}
+
+/***** BUTTONS *****/
+.viewAllButton, .modalCloseButton {
+    border: none;
+    cursor: pointer;
+}
+
 .viewAllButton {
     display: block;
-    margin: 20px auto;
+    margin: 20px auto 0;
     padding: 10px 20px;
-    background-color: #4c90af;
+    background-color: var(--primary);
     color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    border-radius: 10px;
+    transition: transform .2s ease, background-color .2s ease;
 }
+.viewAllButton:hover { transform: translateY(-1px); background-color: var(--primary-strong); }
+.viewAllButton:focus-visible { outline: 2px solid #0b5d7a; outline-offset: 2px; }
 
-/* Слайдер (основной контент) */
+/***** SWIPER (MAIN) *****/
 .slider {
     width: 100%;
-    max-width: 600px;
-    height: 400px;
-    margin: auto;
-    border-radius: 12px;
+    max-width: 900px;
+    margin: 0 auto var(--space-5);
+    border-radius: var(--radius);
     overflow: hidden;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--shadow-lg);
+    aspect-ratio: 3 / 2; /* вместо фиксированной высоты */
 }
+
+.fadeSlide { animation: fadeInSlide .6s ease; }
 
 .slideImage {
-    width: 100%;
-    height: 100%;
+    width: 100%; height: 100%;
     object-fit: cover;
     cursor: pointer;
-    transition: transform 0.5s ease;
+    transition: transform .35s ease;
 }
-
-.slideImage:hover {
-    transform: scale(1.05);
-}
-
-.fadeSlide {
-    animation: fadeInSlide 1s ease-in-out;
-}
+.slideImage:hover { transform: scale(1.03); }
 
 @keyframes fadeInSlide {
-    from {
-        opacity: 0;
-        transform: scale(1.1);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
+    from { opacity: 0; transform: scale(1.03); }
+    to { opacity: 1; transform: scale(1); }
 }
 
-/* Модальные окна для изображений и документов */
-.modalImageContainer,
-.documentModalContainer {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+/***** MODALS (общие стили) *****/
+.modalImageContainer {
+    position: fixed; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(0,0,0,.8);
     z-index: 1000;
+    padding: var(--space-3);
 }
 
-.modalImageContent,
-.documentModalContent {
+.modalImageContent {
     position: relative;
     background: #fff;
-    padding: 20px;
-    border-radius: 12px;
-    max-width: 60%;
-    max-height: 90vh;
-    overflow-y: auto;
-    text-align: center;
+    padding: var(--space-5);
+    border-radius: var(--radius);
+    max-width: min(1100px, 92vw);
+    width: 100%;
+    max-height: 92vh;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
 }
-.modalImageCloseButton {
+
+.modalCloseButton {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    background: none;
-    border: none;
-    font-size: 2rem;
-    cursor: pointer;
-    color: white;
-    z-index: 9999; /* Важно! */
+    top: 10px; right: 10px;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: rgba(0,0,0,.35);
+    color: #fff;
+    font-size: 28px;
+    line-height: 1;
+    display: grid; place-items: center;
+    transition: background-color .2s ease;
+    z-index: 10;
 }
+.modalCloseButton:hover { background: rgba(0,0,0,.5); }
+
+/* Внутренний слайдер модалки */
+.modalImageSlider { width: 100%; height: 100%; }
 
 .modalImage {
     max-width: 100%;
@@ -132,201 +167,191 @@ textarea {
     border-radius: 10px;
     cursor: grab;
 }
-.modalImageCloseButton,
-.documentModalCloseButton {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    border: none;
-    font-size: 2.5rem;
-    cursor: pointer;
-    color: #fff;
-    z-index: 9999; /* Добавь это */
-    background-color: rgba(0, 0, 0, 0.3); /* Подложка для видимости */
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s ease;
-}
 
-.modalImageCloseButton:hover,
-.documentModalCloseButton:hover {
-    background-color: rgba(255, 255, 255, 0.3);
-}
-
-.modalImageCloseButton {
-    color: #fff;
-}
-
-.documentModalCloseButton {
-    color: #333;
-}
-
-/* Сетка миниатюр документов */
+/***** DOCUMENTS GRID (если понадобится миниатюры) *****/
 .documentGrid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(600px, 2fr));
-    gap: 10px;
-    margin-top: 40px;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: var(--space-3);
+    margin-top: var(--space-5);
 }
-
 .documentThumbnail {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    cursor: pointer;
+    width: 100%; aspect-ratio: 4 / 3;
+    object-fit: cover; cursor: pointer;
     border: 2px solid transparent;
-    transition: border 0.3s ease;
-}
-
-.documentThumbnail:hover {
-    border: 2px solid #4c90af;
-}
-
-/* Секции контента */
-.section {
-    padding: 1.5rem;
-    background-color: #ffffff;
+    transition: border-color .2s ease;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
 }
+.documentThumbnail:hover { border-color: var(--primary); }
 
+/***** CONTENT BLOCKS *****/
 .list {
-    list-style-type: disc;
-    margin-left: 2rem;
-    padding-left: 1rem;
+    list-style: disc;
+    padding-left: 20px;
 }
 
-/* Параграфы – дополнительное задание: если нужно изменить отступы или выравнивание */
-p {
-    margin-bottom: 1rem;
-    text-align: justify;
-}
+p { margin-bottom: var(--space-3); text-align: justify; }
 
-/* Секция "Профессиональная деятельность" */
-.proff {
-    overflow: hidden; /* Для корректного обтекания плавающих элементов */
+/* Профдеятельность */
+.proff { overflow: hidden; }
+.proffGrid {
+    display: grid;
+    grid-template-columns: minmax(220px, 30%) 1fr;
+    gap: var(--space-4);
+    align-items: start;
 }
-
 .proffImage {
-    float: left;
-    margin-right: 20px;
-    width: 30%;
-    max-width: 300px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    aspect-ratio: 3 / 4;
     object-fit: cover;
-}
-
-/* Секция "Мой путь" и "Моя направленность" */
-.myWay,
-.vector,
-.educ {
-    /* Дополнительные стили можно добавлять по необходимости */
-}
-
-.myPhoto {
-    width: 40%;
-    max-width: 400px;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    margin-right: 20px;
-    float: left;
-
+    box-shadow: var(--shadow);
 }
 
+/* Мой путь / направленность */
 .content {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: minmax(260px, 40%) 1fr;
+    gap: var(--space-4);
+    align-items: start;
 }
-
-.text {
-    flex: 1;
-    text-align: justify;
+.myPhoto {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
 }
+.text { text-align: justify; }
 
-/* Контейнер для обтекания (если используется float) */
-.wrapper {
-    overflow: hidden;
-}
+/* Обёртка вместо clearfix */
+.wrapper { display: grid; grid-template-columns: minmax(260px, 40%) 1fr; gap: var(--space-4); }
 
-/* Пример дополнительного контейнера */
-.proffdiv {
-    display: flex;
-}
-
-/* Адаптивные стили */
-
-/* Для экранов до 1024px */
+/***** RESPONSIVE *****/
 @media (max-width: 1024px) {
-    .aboutPage {
-        padding: 1rem;
-    }
-    .title {
-        font-size: 2.2rem;
-    }
-    .subtitle {
-        font-size: 1.6rem;
-    }
-    .slider {
-        max-width: 90%;
-        height: 350px;
-    }
+    .aboutPage { padding: var(--space-5) var(--space-4); }
+    .slider { max-width: 100%; }
 }
 
-/* Для экранов до 768px */
 @media (max-width: 768px) {
-    .subtitle {
-        font-size: 1.4rem;
+    .slider { aspect-ratio: 16 / 9; }
+    .proffGrid,
+    .content,
+    .wrapper { grid-template-columns: 1fr; }
+    .myPhoto, .proffImage { aspect-ratio: 4 / 3; }
+}
+
+@media (max-width: 480px) {
+    .aboutPage { padding: var(--space-4); }
+    .modalImageContent { padding: var(--space-4); }
+    .title { font-size: clamp(22px, 6vw, 28px); }
+    .subtitle { border-left-width: 4px; }
+}
+/* === Профдеятельность: сетка и медиа === */
+.proffGrid {
+    display: grid;
+    /* фото ~28–32% ширины, контент — остальное */
+    grid-template-columns: minmax(240px, 30%) 1fr;
+    gap: var(--space-4);
+    align-items: start;
+}
+
+/* Рамка для портретного фото (контролируем геометрию тут, а не на <img>) */
+.proffMedia {
+    width: 100%;
+    max-width: 420px;          /* чтобы фото не раздувалось на широких */
+    aspect-ratio: 3 / 4;       /* портрет */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    background: #f2f2f2;       /* фоновая заливка на время загрузки */
+    /* ограничим высоту на очень низких экранах */
+    max-height: 70vh;
+}
+
+/* Само изображение заполняет рамку полностью */
+.proffImg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;          /* красивое кадрирование без искажений */
+    object-position: center;
+}
+
+/* Fallback для браузеров без aspect-ratio */
+@supports not (aspect-ratio: 1) {
+    .proffMedia {
+        position: relative;
+        height: 0;
+        padding-top: calc(100% * 4 / 3); /* 3/4 => 4/3 по высоте */
     }
-    .slider {
-        max-width: 100%;
-        height: 300px;
-    }
-    /* Отмена float для картинок */
-    .proffImage,
-    .myPhoto {
-        float: none;
-        display: block;
-        margin: 0 auto 20px;
-        width: 80%;
-        max-width: 400px;
-    }
-    .content {
-        flex-direction: column;
+    .proffMedia > picture,
+    .proffMedia > img,
+    .proffMedia > picture > img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
     }
 }
 
-/* Для экранов до 480px */
-@media (max-width: 480px) {
-    .title {
-        font-size: 1.8rem;
+/* Адаптив: на планшете фото немного шире, на мобиле — одна колонка */
+@media (max-width: 1024px) {
+    .proffGrid { grid-template-columns: minmax(220px, 36%) 1fr; }
+}
+@media (max-width: 768px) {
+    .proffGrid { grid-template-columns: 1fr; }
+    .proffMedia {
+        max-width: 520px;
+        margin: 0 auto;
+        aspect-ratio: 3 / 4;      /* на очень узких — чуть более «квадратно» */
+        max-height: none;
     }
-    .subtitle {
-        font-size: 1.2rem;
-    }
-    .slider {
-        height: 250px;
-    }
-    .documentModalContent {
-        max-width: 90%;
-    }
-    .proffImage,
-    .myPhoto {
-        width: 100%;
-        max-width: 100%;
-        margin: 0 0 20px;
-    }
-    .text {
-        font-size: 0.9rem;
-    }
-    .proffdiv {
-        display: block;
-    }
+}
+/* === Универсальный медиаконтейнер для всех картинок === */
+.media {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    background: #f2f2f2;
+    aspect-ratio: var(--ar, 4 / 3);
+}
+
+/* Соотношения сторон */
+.p34  { --ar: 3 / 4; }   /* портрет */
+.p43  { --ar: 4 / 3; }   /* ландшафт */
+.p32  { --ar: 3 / 2; }
+.p169 { --ar: 16 / 9; }
+
+/* Уменьшаем на ~30% на десктопах */
+.shrink {
+    max-width: 70%;
+    margin-inline: auto;
+}
+
+/* На планшетах/мобилках всегда 100% ширины */
+@media (max-width: 768px) {
+    .shrink { max-width: 100%; }
+}
+
+/* Картинка внутри контейнера */
+.mediaImg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Fallback: если aspect-ratio не поддерживается */
+@supports not (aspect-ratio: 1) {
+    .media { position: relative; height: 0; padding-top: calc(100% * (3 / 4)); }
+    .p43.media  { padding-top: calc(100% * (3 / 4)); }  /* 4:3 => 3/4 по высоте */
+    .p32.media  { padding-top: calc(100% * (2 / 3)); }
+    .p169.media { padding-top: calc(100% * (9 / 16)); }
+    .media > img,
+    .media > picture,
+    .media > picture > img { position: absolute; inset: 0; width: 100%; height: 100%; }
 }

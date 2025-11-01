@@ -1,0 +1,97 @@
+/* Global styles, tokens, utilities */
+:root {
+  /* Brand palette (teal/blue family) */
+  --brand-50: #eef7fb;
+  --brand-100: #d7ebf6;
+  --brand-200: #b6d9ea;
+  --brand-300: #8cc2da;
+  --brand-400: #62aac8;
+  --brand-500: #4c90af; /* primary */
+  --brand-600: #3c7c97; /* primary-strong */
+  --brand-700: #2f6e92; /* dark accent used in text */
+  --brand-800: #24576f;
+  --brand-900: #1a3f52;
+
+  --text-strong: #1f2328;
+  --text: #222;
+  --muted: #4a4f57;
+  --surface: #ffffff;
+  --bg: #f7f9fb;
+
+  /* Gradients */
+  --accent-grad: linear-gradient(135deg, var(--brand-500), var(--brand-600));
+  /* legacy alias to avoid breakage */
+  --grad-accent: var(--accent-grad);
+  --grad-surface: linear-gradient(180deg, #ffffff, #f7fafc);
+  --grad-footer: linear-gradient(135deg, #4c90af, #3c7c97 60%, #2f6e92);
+
+  /* Focus and shadows */
+  --focus-ring: 2px solid #0b5d7a;
+  --shadow-sm: 0 4px 10px rgba(0,0,0,.08);
+  --shadow-md: 0 8px 16px rgba(0,0,0,.12);
+  --shadow-lg: 0 10px 24px rgba(0,0,0,.18);
+
+  /* Fluid typography scale */
+  --fs-body: clamp(15px, 0.28vw + 14px, 16.5px);
+  --fs-sm: clamp(13.5px, 0.22vw + 12.5px, 15px);
+  --fs-lg: clamp(17px, 0.36vw + 15px, 19px);
+  --fs-h1: clamp(28px, 2.2vw + 20px, 44px);
+  --fs-h2: clamp(22px, 1.4vw + 18px, 32px);
+  --fs-h3: clamp(18px, 0.9vw + 16px, 24px);
+}
+
+html:focus-within { scroll-behavior: smooth; }
+
+/* Base typography */
+body { font-size: var(--fs-body); color: var(--text); background: var(--bg); }
+:where(h1){ font-size: var(--fs-h1); line-height: 1.2; color: var(--text-strong); }
+:where(h2){ font-size: var(--fs-h2); line-height: 1.25; color: var(--text-strong); }
+:where(h3){ font-size: var(--fs-h3); line-height: 1.3; color: var(--text-strong); }
+:where(p,li,blockquote){ overflow-wrap: anywhere; }
+
+img, picture, video, canvas, svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Prevent images from overflowing rounded containers */
+img { border-radius: inherit; }
+
+/* Utility for cover thumbnails if needed in components */
+.media-cover {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Reveal-on-scroll utility */
+.reveal { opacity: 0; transform: translateY(10px); transition: opacity .5s ease, transform .5s ease; }
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+.reveal[data-reveal="float"] { transform: translateY(6px) scale(.98); }
+.reveal[data-reveal="float"].is-visible { transform: translateY(0) scale(1); }
+
+/* Button utility (optional for module authors) */
+.button-gradient {
+  background: var(--accent-grad);
+  color: #fff;
+  border: none;
+  box-shadow: var(--shadow-sm);
+}
+.button-gradient:hover { box-shadow: var(--shadow-md); }
+.button-gradient:focus-visible { outline: var(--focus-ring); outline-offset: 2px; }
+
+/* Subtle animations (keyframes) */
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(8px);} to { opacity: 1; transform: translateY(0);} }
+@keyframes floatIn { from { opacity: 0; transform: translateY(6px) scale(.98);} to { opacity: 1; transform: translateY(0) scale(1);} }
+@keyframes scaleIn { from { opacity: 0; transform: scale(.96);} to { opacity: 1; transform: scale(1);} }
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
