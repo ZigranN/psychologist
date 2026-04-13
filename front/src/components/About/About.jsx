@@ -3,17 +3,106 @@ import { NavLink } from "react-router-dom";
 import { createPortal } from "react-dom";
 import styles from "./About.module.css";
 
+const modalContentMap = {
+    therapy: {
+        title: "Для кого нужна терапия",
+        text: (
+            <>
+                <p>
+                    Психотерапия нужна всем, включая психологов. Только не всякий это понимает.
+                    Устаревшие мифы, что она для слабых или психически больных, уже отжили.
+                    Психотерапия, прежде всего, нужна как практика развития осознанности и
+                    освоения навыков психологической саморегуляции, чтобы не повторять шаблоны
+                    усвоенных реакций и моделей поведения в своей семье, прежде всего.
+                </p>
+
+                <p>
+                    Осваивая методы самопомощи, человек обретает ясность и устойчивость и
+                    может жить с большим удовлетворением. Быть цельным — это гораздо больше,
+                    чем переживать отсутствие болезней. Можно повысить уровень защиты своего
+                    здоровья, осваивая здоровую эмоциональную саморегуляцию. Целостное здоровье
+                    зависит от того, как каждый человек использует самые обычные и при этом
+                    самые действенные инструменты: поддержание психологического баланса,
+                    здоровые эмоции, продуктивный образ жизни и различные практики повышения
+                    осознанности.
+                </p>
+
+                <p>
+                    Рост и развитие заложены в нас природой и жизненно необходимы для каждого
+                    человека для достижения гармонии в отношениях с собой и окружающим миром,
+                    для поиска своего места в жизни, осознавания индивидуального жизненного
+                    смысла и предназначения, без понимания которых невозможно ощущение полноты
+                    жизни. Задача психотерапевтической практики — сделать этот процесс
+                    максимально осознанным.
+                </p>
+            </>
+        ),
+    },
+    selfKnowledge: {
+        title: "Для чего нужна психотерапия",
+        text: (
+            <>
+                <p>
+                    Наша личность составляет комбинацию генетической информации родителей и рода
+                    со своей уникальной комбинацией нервных связей. Через поведенческие,
+                    эмоциональные особенности родителей мы наследуем паттерны нервных сетей.
+                </p>
+
+                <p>
+                    Генетические нейронные связи являются не более чем платформой, на которой
+                    мы можем создавать свою личность. Когда мы узнаем новые знания и осваиваем
+                    новый опыт, то создаем новые нейронные связи.
+                </p>
+
+                <p>
+                    Не осваивая знаний и опыта, мы ограничиваем генетику, поскольку активируем
+                    только те цепи, которые достались нам по генетической памяти.
+                </p>
+
+                <p>
+                    Новые знания — это не только интеллектуальная информация, а знание о себе,
+                    самопознание: какой я, каким или какой проявляюсь, что мне мешает, каким
+                    я хочу быть или выражать себя, и что для этого мне нужно, какие навыки
+                    мне нужно для этого развить.
+                </p>
+
+                <p>
+                    Психотерапия как психологическая практика помогает нам осознать свои привычные
+                    паттерны поведения, которые мешают жить более плодотворно, и развить
+                    способность принимать ответственность за то, как человек сам создает свой опыт.
+                </p>
+
+                <p>
+                    Она предназначена не только для тех, кто страдает психологическими или
+                    психосоматическими расстройствами, но и для тех, кто желает познавать себя
+                    и жить более осознанно.
+                </p>
+
+                <p>
+                    Новое знание и опыт можно осваивать в психологической практике.
+                </p>
+            </>
+        ),
+    },
+};
+
 const About = () => {
-    const [isModalOpen, setModalOpen] = useState(false);
-    const triggerRef = useRef(null);
+    const [activeModal, setActiveModal] = useState(null);
     const modalRef = useRef(null);
     const firstFocusableRef = useRef(null);
+    const lastTriggerRef = useRef(null);
 
-    const handleClose = useCallback(() => setModalOpen(false), []);
-    const handleToggle = useCallback(() => setModalOpen((v) => !v), []);
+    const openModal = useCallback((modalKey, event) => {
+        lastTriggerRef.current = event.currentTarget;
+        setActiveModal(modalKey);
+    }, []);
+
+    const handleClose = useCallback(() => {
+        setActiveModal(null);
+    }, []);
 
     useEffect(() => {
-        if (!isModalOpen) return;
+        if (!activeModal) return;
 
         const prevOverflow = document.body.style.overflow;
         document.body.style.overflow = "hidden";
@@ -56,11 +145,11 @@ const About = () => {
             document.removeEventListener("keydown", onKey);
             document.body.style.overflow = prevOverflow;
 
-            if (triggerRef.current) {
-                triggerRef.current.focus();
+            if (lastTriggerRef.current) {
+                lastTriggerRef.current.focus();
             }
         };
-    }, [isModalOpen, handleClose]);
+    }, [activeModal, handleClose]);
 
     const onBackdropClick = (e) => {
         if (e.target === e.currentTarget) {
@@ -68,70 +157,51 @@ const About = () => {
         }
     };
 
-    const modalMarkup = isModalOpen
-        ? createPortal(
-            <div
-                className={`${styles.modal} ${styles.show}`}
-                onMouseDown={onBackdropClick}
-                role="presentation"
-            >
+    const currentModal = activeModal ? modalContentMap[activeModal] : null;
+
+    const modalMarkup =
+        activeModal && currentModal
+            ? createPortal(
                 <div
-                    id="therapy-dialog"
-                    ref={modalRef}
-                    className={styles.modalContent}
-                    role="dialog"
-                    aria-modal="true"
-                    aria-labelledby="therapy-title"
-                    tabIndex="-1"
+                    className={`${styles.modal} ${styles.show}`}
+                    onMouseDown={onBackdropClick}
+                    role="presentation"
                 >
-                    <button
-                        ref={firstFocusableRef}
-                        className={styles.closeButton}
-                        type="button"
-                        aria-label="Закрыть диалог"
-                        onClick={handleClose}
+                    <div
+                        id={`dialog-${activeModal}`}
+                        ref={modalRef}
+                        className={styles.modalContent}
+                        role="dialog"
+                        aria-modal="true"
+                        aria-labelledby={`title-${activeModal}`}
+                        tabIndex="-1"
                     >
-                        &times;
-                    </button>
+                        <button
+                            ref={firstFocusableRef}
+                            className={styles.closeButton}
+                            type="button"
+                            aria-label="Закрыть диалог"
+                            onClick={handleClose}
+                        >
+                            &times;
+                        </button>
 
-                    <h2 id="therapy-title">Для кого нужна терапия</h2>
+                        <h2 id={`title-${activeModal}`}>{currentModal.title}</h2>
 
-                    <p>
-                        Психотерапия нужна всем, включая психологов. Только не всякий это понимает.
-                        Устаревшие мифы, что она для слабых или психически больных, уже отжили.
-                        Психотерапия, прежде всего, нужна как практика развития осознанности и
-                        освоения навыков психологической саморегуляции, чтобы не повторять шаблоны
-                        усвоенных реакций и моделей поведения в своей семье, прежде всего.
-                        <br />
-                        <br />
-                        Осваивая методы самопомощи, человек обретает ясность и устойчивость и
-                        может жить с большим удовлетворением. Быть цельным — это гораздо больше,
-                        чем переживать отсутствие болезней. Можно повысить уровень защиты своего
-                        здоровья, осваивая здоровую эмоциональную саморегуляцию. Целостное здоровье
-                        зависит от того, как каждый человек использует самые обычные и при этом
-                        самые действенные инструменты: поддержание психологического баланса,
-                        здоровые эмоции, продуктивный образ жизни и различные практики повышения
-                        осознанности.
-                        <br />
-                        <br />
-                        Рост и развитие заложены в нас природой и жизненно необходимы для каждого
-                        человека для достижения гармонии в отношениях с собой и окружающим миром,
-                        для поиска своего места в жизни, осознавания индивидуального жизненного
-                        смысла и предназначения, без понимания которых невозможно ощущение полноты
-                        жизни. Задача психотерапевтической практики — сделать этот процесс
-                        максимально осознанным.
-                    </p>
+                        <div className={styles.modalText}>
+                            {currentModal.text}
+                        </div>
 
-                    <div className={styles.modalActions}>
-                        <NavLink to="/booking" className={styles.cta}>
-                            Записаться на консультацию
-                        </NavLink>
+                        <div className={styles.modalActions}>
+                            <NavLink to="/booking" className={styles.cta}>
+                                Записаться на консультацию
+                            </NavLink>
+                        </div>
                     </div>
-                </div>
-            </div>,
-            document.body
-        )
-        : null;
+                </div>,
+                document.body
+            )
+            : null;
 
     return (
         <section className={styles.about} id="about" aria-labelledby="about-title">
@@ -186,14 +256,23 @@ const About = () => {
 
             <div className={styles.therapy}>
                 <button
-                    ref={triggerRef}
                     type="button"
                     className={styles.therapyTrigger}
-                    aria-expanded={isModalOpen}
-                    aria-controls="therapy-dialog"
-                    onClick={handleToggle}
+                    aria-expanded={activeModal === "therapy"}
+                    aria-controls="dialog-therapy"
+                    onClick={(e) => openModal("therapy", e)}
                 >
-                    Кому нужна психотерапия? {isModalOpen ? "▲" : "▼"}
+                    Кому нужна психотерапия? {activeModal === "therapy" ? "▲" : "▼"}
+                </button>
+
+                <button
+                    type="button"
+                    className={styles.therapyTrigger}
+                    aria-expanded={activeModal === "selfKnowledge"}
+                    aria-controls="dialog-selfKnowledge"
+                    onClick={(e) => openModal("selfKnowledge", e)}
+                >
+                    Для чего нужна психотерапия {activeModal === "selfKnowledge" ? "▲" : "▼"}
                 </button>
             </div>
 

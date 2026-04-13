@@ -23,7 +23,7 @@ const AboutPage = () => {
     const modalImageRef = useRef(null);
 
     const galleryImages = Array.from({ length: 10 }, (_, i) => `/images/video${i + 1}.jpg`);
-    const documentImages = Array.from({ length: 15 }, (_, i) => `/images/educ${i + 1}.jpg`);
+    const documentImages = Array.from({ length: 16 }, (_, i) => `/images/educ${i + 1}.jpg`);
 
     // плавный скролл по якорям
     useEffect(() => {
