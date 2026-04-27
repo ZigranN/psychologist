@@ -66,10 +66,9 @@ h3 {
 }
 
 .content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
 }
 
 .card {
@@ -78,15 +77,16 @@ h3 {
     padding: 20px;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    max-width: 330px;
-    width: 100%;
     text-align: center;
-    margin: 0 auto;
     display: flex;
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    margin: 0;
+    box-sizing: border-box;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    flex-grow: 1;
     /* Удаляем max-height */
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
@@ -95,6 +95,7 @@ h3 {
     background: #fff;
     color: #4c90af;
     padding: 12px 10px;
+    margin-top: auto;
     border-radius: 6px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
@@ -160,10 +161,10 @@ h3 {
 }
 
 .cardBlock {
-    display: flex;
-    flex-wrap: wrap;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 20px;
-    justify-content: center;
     align-items: stretch;
 }
 
@@ -243,14 +244,17 @@ h3 {
 }
 
 @media (max-width: 768px) {
-    .content,
+    .content {
+        max-width: 100%;
+    }
+
     .cardBlock {
-        flex-direction: column;
-        align-items: center;
+        grid-template-columns: 1fr;
+        gap: 16px;
     }
 
     .card {
-        max-width: 90%;
+        width: 100%;
     }
 
     .tabs {
@@ -258,8 +262,8 @@ h3 {
     }
 
     .tab {
-        flex: 1;
-        max-width: 48%;
+        flex: 1 1 220px;
+        max-width: 100%;
         margin: 5px 0;
         font-size: 12px;
     }
@@ -285,9 +289,6 @@ h3 {
         font-size: 18px;
     }
 
-    .modal {
-        width: 95%;
-    }
 
     .modalContent {
         font-size: 11px;

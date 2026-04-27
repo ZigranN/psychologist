@@ -59,10 +59,6 @@ const WorkFormat = () => {
                                     </div>
                                     <div className={styles.details}>
                                         <span>Длительность: 60 мин</span>
-                                        <span>Стоимость: 2500 сом</span>
-                                        <strong>Стоимость курса / 7 сессий по 2300 сом</strong>
-                                        <strong>Стоимость курса из 10 сессий: 20 000 сом</strong>
-
                                     </div>
                                     <button
                                         className={styles.cardButton}
@@ -82,7 +78,6 @@ const WorkFormat = () => {
                                     </div>
                                     <div className={styles.details}>
                                         <span>Длительность: 60 мин</span>
-                                        <span>Стоимость: 3000 сом</span>
                                     </div>
                                     <button
                                         className={styles.cardButton}
