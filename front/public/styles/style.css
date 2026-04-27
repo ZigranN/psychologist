@@ -7,7 +7,7 @@
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+    padding: clamp(10px, 2vw, 20px);
     overflow: hidden;
 }
 
@@ -15,8 +15,8 @@
     background-color: #fff;
     border: 2px solid #4c90af;
     color: #4577a0;
-    font-size: 16px;
-    padding: 12px 25px;
+    font-size: clamp(14px, 1.8vw, 16px);
+    padding: clamp(10px, 1.5vw, 12px) clamp(20px, 3vw, 25px);
     cursor: pointer;
     transition: all 0.3s ease;
     display: inline-block;

@@ -134,7 +134,8 @@
 
 /* Узкие экраны ≤480px — компактнее шрифты и отступы */
 @media (max-width: 480px) {
-    .main { padding: 12px; }
-    .button { font-size: 14px; width: 100%; max-width: 92%; }
-    .imageFrame { aspect-ratio: 4 / 5; }     /* на очень узких — чуть “уже” портрет */
+    .main { padding: clamp(10px, 2vw, 12px); }
+    .button { width: 100%; max-width: 95%; }
+    .imageFrame { aspect-ratio: 4 / 5; }
+    .contentContainer { gap: clamp(15px, 3vw, 20px); }
 }

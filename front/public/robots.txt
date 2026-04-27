@@ -1,3 +1,26 @@
+# Разрешаем индексацию всем поисковым системам
 User-agent: *
 Allow: /
+
+# Запрещаем индексацию служебных директорий
+Disallow: /admin/
+Disallow: /api/
+Disallow: /node_modules/
+Disallow: /src/
+Disallow: /*.json$
+Disallow: /*.config.js$
+
+# Специальные правила для Яндекс
+User-agent: Yandex
+Allow: /
+
+# Специальные правила для Google
+User-agent: Googlebot
+Allow: /
+
+# Указываем расположение sitemap
 Sitemap: https://psyholistic.kg/sitemap.xml
+
+# Дополнительная информация для поисковых систем
+# Частота сканирования
+Crawl-delay: 1

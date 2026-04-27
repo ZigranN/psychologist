@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import SEO from "../../components/SEO";
 import styles from "./BookingPage.module.css";
 
 const BookingPage = () => {
@@ -141,9 +142,15 @@ const BookingPage = () => {
     };
 
     return (
-        <div className={styles.bookingPage}>
-            <div className={styles.card}>
-                <h1 className={styles.title}>Запись на сессию</h1>
+        <>
+            <SEO
+                title="Запись на консультацию | Гештальт-психолог Салтанат Тагаева"
+                description="Запишитесь на индивидуальную, парную или групповую психологическую консультацию онлайн или очно в Бишкеке. Удобная форма записи к гештальт-терапевту."
+                url="https://psyholistic.kg/booking"
+            />
+            <div className={styles.bookingPage}>
+                <div className={styles.card}>
+                    <h1 className={styles.title}>Запись на сессию</h1>
 
                 {statusMessage && (
                     <div className={`${styles.statusMessage} ${styles[statusType]}`}>
@@ -222,6 +229,7 @@ const BookingPage = () => {
                 </form>
             </div>
         </div>
+        </>
     );
 };
 

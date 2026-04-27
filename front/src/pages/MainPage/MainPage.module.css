@@ -1,13 +1,13 @@
 .main {
     margin: 0 auto;
-    padding: 20px;
+    padding: clamp(10px, 2vw, 20px);
     max-width: 1200px;
 }
 
 .contentContainer {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: clamp(15px, 3vw, 20px);
     align-items: center;
     justify-content: center;
 }
@@ -15,8 +15,8 @@
 /* Левый блок */
 .shapeLeft {
     flex: 1;
-    min-width: 300px;
-    padding: 20px;
+    min-width: clamp(280px, 30vw, 300px);
+    padding: clamp(15px, 3vw, 20px);
     background-color: #f0efee;
     border-radius: 10px;
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
@@ -62,48 +62,22 @@
         width: 100%;
         height: auto;
     }
-
-    .title {
-        font-size: 26px;
-    }
-
-    .subtitle {
-        font-size: 18px;
-    }
 }
 
-@media (max-width: 390px) {
-    .title {
-        font-size: 22px;
-    }
-
-    .subtitle {
-        font-size: 16px;
-    }
-
-    .button {
-        font-size: 14px;
-        max-width: 100%;
-    }
-
-    .mainText {
-        font-size: 12px;
-        text-indent: 20px;
-    }
-
-    .shapeRight {
-        width: 100%;
+@media (max-width: 480px) {
+    .shapeLeft {
+        min-width: 100%;
     }
 }
 .button {
     display: inline-block;
-    padding: 12px 25px;
+    padding: clamp(10px, 1.5vw, 12px) clamp(20px, 3vw, 25px);
     background: #4c90af;
     color: #fff;
     border: 2px solid #4c90af;
     border-radius: 8px;
     font-weight: bold;
-    font-size: 16px;
+    font-size: clamp(14px, 1.8vw, 16px);
     text-align: center;
     cursor: pointer;
     transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;

@@ -1,6 +1,7 @@
 import  { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import {articlesData} from "./../../assets/ArticlesData.js";
+import SEO from "../../components/SEO";
 import styles from "./ArticlesPage.module.css";
 
 const ArticlesPage = () => {
@@ -23,8 +24,14 @@ const ArticlesPage = () => {
     }, [location]);
 
     return (
-        <div className={styles.articlesPage}>
-            <h1 className={styles.title}>Статьи</h1>
+        <>
+            <SEO
+                title="Статьи о психологии | Гештальт-терапия | Салтанат Тагаева"
+                description="Полезные статьи о психологии, гештальт-терапии, личностном развитии и работе с эмоциями от профессионального психолога Салтанат Тагаевой."
+                url="https://psyholistic.kg/articles"
+            />
+            <div className={styles.articlesPage}>
+                <h1 className={styles.title}>Статьи</h1>
             {articlesData.map((article) => (
                 <div key={article.id} id={`${article.id}`} className={styles.article}>
                     <h2 className={styles.articleTitle}>
@@ -35,6 +42,7 @@ const ArticlesPage = () => {
                 </div>
             ))}
         </div>
+        </>
     );
 };
 

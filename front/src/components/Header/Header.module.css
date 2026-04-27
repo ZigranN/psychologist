@@ -13,7 +13,7 @@
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 5px;
+    padding: 0 clamp(10px, 2vw, 20px);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -26,11 +26,11 @@
 .brand p {
     padding: 0;
     margin: 0;
-    font-size: 20px;
+    font-size: clamp(14px, 2.5vw, 20px);
 }
 
 .title {
-    font-size: 28px;
+    font-size: clamp(18px, 3vw, 28px);
     margin-bottom: 0;
     padding: 0;
     font-weight: 700;
@@ -63,14 +63,14 @@
 .nav {
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: clamp(15px, 2vw, 30px);
     transition: transform 0.3s ease-in-out;
 }
 
 /* Стили для ссылок навигации */
 .link {
     text-decoration: none;
-    font-size: 16px;
+    font-size: clamp(14px, 1.5vw, 16px);
     color: #2c3e50;
     position: relative;
     padding: 8px 0;
@@ -196,11 +196,11 @@
         transform: translateY(0); /* Меню выезжает вниз, становясь видимым */
     }
     .title {
-        font-size: 20px;
-        margin-left: 28px;
+        font-size: clamp(16px, 5vw, 20px);
+        margin-left: 10px;
     }
     .preTitle {
-        font-size: 20px;
+        font-size: clamp(12px, 4vw, 20px);
         padding: 0;
         margin: 0;
     }

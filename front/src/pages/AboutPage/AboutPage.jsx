@@ -6,6 +6,7 @@ import { Autoplay, Navigation } from "swiper/modules";
 import { useLocation } from "react-router-dom";
 import { useSpring, animated } from "react-spring";
 import { useGesture } from "@use-gesture/react";
+import SEO from "../../components/SEO";
 import styles from "./AboutPage.module.css";
 
 const clamp = (v, min, max) => Math.min(Math.max(v, min), max);
@@ -109,8 +110,14 @@ const AboutPage = () => {
     }, [api]);
 
     return (
-        <div className={styles.aboutPage}>
-            <h1 className={styles.title}>Обо мне</h1>
+        <>
+            <SEO
+                title="Обо мне - Салтанат Тагаева | Гештальт-психолог в Бишкеке"
+                description="Профессиональное образование, опыт работы и направления деятельности гештальт-психолога Салтанат Тагаевой. Индивидуальная и групповая психотерапия, холистический подход."
+                url="https://psyholistic.kg/about"
+            />
+            <div className={styles.aboutPage}>
+                <h1 className={styles.title}>Обо мне</h1>
 
             <div className={`${styles.media} ${styles.p32} ${styles.shrink}`}>
                 <Swiper
@@ -352,6 +359,7 @@ const AboutPage = () => {
                 </div>
             </section>
         </div>
+        </>
     );
 };
 

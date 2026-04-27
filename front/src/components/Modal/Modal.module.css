@@ -15,7 +15,7 @@
 
 .modalContent {
     background: white;
-    padding: 25px;
+    padding: clamp(20px, 4vw, 25px);
     border-radius: 8px;
     max-width: 500px;
     width: 90%;
@@ -43,7 +43,7 @@
 }
 
 .title {
-    font-size: 22px;
+    font-size: clamp(18px, 3vw, 22px);
     margin-bottom: 10px;
     font-weight: bold;
     color: #333;
@@ -51,7 +51,7 @@
 
 .text {
     margin-bottom: 20px;
-    font-size: 16px;
+    font-size: clamp(14px, 1.8vw, 16px);
     color: #555;
     line-height: 1.6;
 }
@@ -60,10 +60,10 @@
     background: #007bff;
     color: white;
     text-decoration: none;
-    padding: 12px 24px;
+    padding: clamp(10px, 1.5vw, 12px) clamp(20px, 3vw, 24px);
     border-radius: 5px;
     display: inline-block;
-    font-size: 16px;
+    font-size: clamp(14px, 1.8vw, 16px);
     font-weight: bold;
     cursor: pointer;
     transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
@@ -93,24 +93,6 @@
 /* Адаптивность */
 @media (max-width: 480px) {
     .modalContent {
-        padding: 20px;
-        max-width: 90%;
-    }
-
-    .title {
-        font-size: 20px;
-    }
-
-    .text {
-        font-size: 14px;
-    }
-
-    .detailsButton {
-        font-size: 14px;
-        padding: 10px 20px;
-    }
-
-    .closeButton {
-        font-size: 20px;
+        max-width: 95%;
     }
 }

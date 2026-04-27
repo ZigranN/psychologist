@@ -1,6 +1,6 @@
 .appointment {
     background-color: #f6f5f2;
-    padding: 40px 20px;
+    padding: clamp(20px, 5vw, 40px) clamp(15px, 3vw, 20px);
     max-width: 1200px;
     margin: 0 auto;
     animation: fadeIn 1s ease-in-out;
@@ -59,7 +59,7 @@
 }
 
 .subtitle {
-    font-size: 14px;
+    font-size: clamp(12px, 1.8vw, 14px);
     color: #4c90af;
     margin-bottom: 10px;
     font-weight: bold;
@@ -68,7 +68,7 @@
 }
 
 .title {
-    font-size: 24px;
+    font-size: clamp(18px, 3vw, 24px);
     font-weight: bold;
     color: #333;
     margin-bottom: 20px;
@@ -76,7 +76,7 @@
 }
 
 .description {
-    font-size: 16px;
+    font-size: clamp(14px, 1.8vw, 16px);
     color: #666;
     margin-bottom: 20px;
     text-align: center;
@@ -85,11 +85,11 @@
 
 .input {
     width: 100%;
-    padding: 12px 15px;
+    padding: clamp(10px, 1.5vw, 12px) clamp(12px, 2vw, 15px);
     margin-bottom: 15px;
     border: 1px solid #4c90af;
     border-radius: 5px;
-    font-size: 14px;
+    font-size: clamp(13px, 1.5vw, 14px);
     color: #333;
     transition: border-color 0.3s ease;
     box-sizing: border-box;
@@ -103,12 +103,12 @@
 
 .button {
     width: 100%;
-    padding: 12px 15px;
+    padding: clamp(10px, 1.5vw, 12px) clamp(12px, 2vw, 15px);
     background: #4c90af;
     color: #fff;
     border: none;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: clamp(14px, 1.8vw, 16px);
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
     font-weight: bold;
@@ -140,53 +140,20 @@
 
     .form {
         width: 100%;
-        padding: 20px;
-    }
-
-    .title {
-        font-size: 22px;
-    }
-
-    .description {
-        font-size: 14px;
-    }
-
-    .input {
-        font-size: 13px;
-    }
-
-    .button {
-        font-size: 14px;
+        padding: clamp(15px, 3vw, 20px);
     }
 }
 
 @media (max-width: 480px) {
-    .title {
-        font-size: 15px;
-    }
-
-    .description {
-        font-size: 10px;
-    }
     .form p {
-        font-size: 12px;
-    }
-    .input {
-        padding: 10px;
-        font-size: 12px;
+        font-size: clamp(11px, 2vw, 12px);
     }
 
-    .button {
-        padding: 10px;
-        font-size: 14px;
-    }
-    .appointment {
-        background-color: #f6f5f2;
-        padding: 0;
-    }
     .form {
-        width: 83%;
+        width: 90%;
+        max-width: 100%;
     }
+
     .image {
         width: 100%;
         padding: 0;
